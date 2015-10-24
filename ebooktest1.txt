@@ -1,0 +1,2185 @@
+Astronomy & Astrophysics manuscript no. hd189˙astro-ph
+
+c
+
+ESO 2013
+
+April 16, 2013
+
+Detection of carbon monoxide in the high-resolution day-side
+
+spectrum of the exoplanet HD 189733b ⋆
+
+R.J. de Kok1, M. Brogi2, I.A.G. Snellen2, J. Birkby2, S.Albrecht3, and E.J.W. de Mooij4
+
+1 SRON Netherlands Institute for Space Research, Sorbonnelaan 2, 3584 CA Utrecht, The Netherlands e-mail: R.J.de.Kok@sron.nl
+
+2 Leiden Observatory, Leiden University, Postbus 9513, 2300 RA Leiden, The Netherlands 3 Department of Physics, and Kavli Institute for Astrophysics and Space Research, Massachusetts Institute of Technology, Cambridge, Massachusetts 02139, USA
+
+4 Department of Astronomy and Astrophysics, University of Toronto, 50 St. George Street, Toronto, Ontario M5S 3H4, Canada ABSTRACT
+
+Context. After many attempts over more than a decade, high-resolution spectroscopy has recently delivered its first detections of molecular absorption in exoplanet atmospheres, both in transmission and thermal emission spectra. Targeting the combined signal from individual lines in molecular bands, these measurements use variations in the planet radial velocity to disentangle the planet signal from telluric and stellar contaminants.
+
+Aims. In this paper we apply high resolution spectroscopy to probe molecular absorption in the day-side spectrum of the bright transiting hot Jupiter HD 189733b.
+
+Methods. We observed HD 189733b with the CRIRES high-resolution near-infrared spectograph on the Very Large Telescope during three nights, targeting possible absorption from carbon monoxide, water vapour, methane and carbon dioxide, at 2.0 and 2.3 µm.
+
+Results. We detect a 5-σ absorption signal from CO at a contrast level of ∼4.5×10−4 with respect to the stellar continuum, revealing the planet orbital radial velocity at 154+4 km s−1. This allows us to solve for the planet and stellar mass in a similar way as for stellar
+
+−3
+
+eclipsing binaries, resulting in Ms = 0.846+0.068 M
+
+M
+
+−0.049
+
+⊙ and Mp = 1.162+0.058
+
+−0.039
+
+Jup. No significant absorption is detected from H2O, CO2
+
+or CH4 and we determined upper limits on their line contrasts here.
+
+Conclusions. The detection of CO in the day-side spectrum of HD 189733b can be made consistent with the haze layer proposed to explain the optical to near-infrared transmission spectrum if the layer is optically thin at the normal incidence angles probed by our observations, or if the CO abundance is high enough for the CO absorption to originate from above the haze. Our non-detection of CO2 at 2.0 µm is not inconsistent with the deep CO2 absorption from low resolution NICMOS secondary eclipse data in the same wavelength range. If genuine, the absorption would be so strong that it blanks out any planet light completely in this wavelength range, leaving no high-resolution signal to be measured.
+
+Key words. Planets and satellites: atmospheres – Infrared: planetary systems – Methods: data analysis – Techniques: spectroscopic
+
+– Stars: individual: HD 189733: planetary systems
+
+1. Introduction
+
+that Rayleigh scattering dominates the transmission spectrum up
+
+to 2.5 µm.
+
+The extrasolar planet (exoplanet) transiting the K-star HD
+
+Numerous
+
+secondary
+
+eclipse
+
+measurements
+
+(e.g.
+
+arXiv:1304.4014v1 [astro-ph.EP] 15 Apr 2013 189733 is one of the most studied exoplanets to date, since the brightness of the system (V=7.75 mag) allows the de-
+
+Deming et al. 2006; Grillmair et al. 2008; Charbonneau et al.
+
+tailed study of its atmosphere through transit and secondary
+
+2008; Swain et al. 2009) have placed constraints on the
+
+eclipse measurements. Optical transmission measurements show
+
+day-side temperature structure and trace gas abundances (e.g.
+
+a steady decrease of the effective planet radius from 0.3 to
+
+Madhusudhan & Seager 2009; Line et al. 2012; Lee et al. 2012).
+
+1 µm, which is thought to be due to Rayleigh scattering by
+
+In addition, phase curve observations from the Spitzer Space
+
+a high altitude haze layer (Pont et al. 2008; Sing et al. 2009;
+
+Telescope suggest that the hottest point in the planet atmosphere
+
+Pont et al. 2012). The Rayleigh slope seems only interrupted by is shifted with respect to the sub-stellar point, indicating strong
+
+an absorption signal from sodium at 0.59 µm (Redfield et al.
+
+longitudinal circulation in the atmosphere (Knutson et al. 2009,
+
+2008; Huitson et al. 2012). There is a strong ungoing debate
+
+2012). However, also several secondary eclipse measurements on whether this Rayleigh scattering signal continues in the
+
+are controversial. Swain et al. (2010) claim the presence of near-infrared. Analysis of HST NICMOS spectroscopic ob-an enormous emission feature at 3.25 µm from ground-based
+
+servations by (Swain et al. 2008) show absorption signatures observations, interpreted as non-LTE emission from methane.
+
+from water and methane. However, reanalysis of the same
+
+The same team (Waldmann et al. 2012) confirmed this result data (Gibson et al. 2011), narrow band NICMOS observations with new data, in addition to showing similarly strong emission
+
+(Sing et al. 2009), and HST data from WFC3 (Gibson et al.
+
+features at 2.3 µm. However, Mandell et al. (2011) see no sign
+
+2012) show no clear evidence for molecular features and suggest of the L-band emission in NIRSPEC data, with upper limits
+
+40 times smaller than the claimed non-LTE methane signal,
+
+⋆ Based on observations collected at the European Southern
+
+and suggest that imperfect correction for telluric water is the
+
+Observatory (186.C-0289)
+
+source of the feature claimed by Swain et al. In any case, the
+
+1
+
+
+
+
+
+de Kok et al.: CO in the atmosphere of HD 189733b
+
+unconventional observation and data analysis preformed by
+
+Table 1. Details of the CRIRES observations, showing the ob-
+
+Swain et al. and Waldmann et al. needs to be validated using
+
+serving date, the targeted walength range, the planet orbital
+
+other techniques.
+
+phase, the number of spectra after background subtraction, and
+
+The current measurements of the day-side of HD 189733b
+
+the net integration time.
+
+are taken at low spectral resolution at best, with most observa-
+
+tions being from broad-band photometry. The limited spectral
+
+Date
+
+λ (µm)
+
+Phase
+
+N
+
+t int (s)
+
+resolution of the available measurements result in a large ambi-
+
+guity in atmospheric composition (e.g. Madhusudhan & Seager
+
+13 Jul 2011
+
+2.2875-2.3452
+
+0.3837-0.4801
+
+110
+
+13200
+
+29 Jul 2011
+
+1.9626-2.0045
+
+0.5727-0.6661
+
+69
+
+13800
+
+2009; Line et al. 2012; Lee et al. 2012) and temperature struc-21 Aug 2011
+
+1.9626-2.0045
+
+0.3506-0.4377
+
+76
+
+12160
+
+ture (Pont et al. 2012).
+
+Recently, high resolution spectroscopy has delivered its
+
+first detections of molecular absorption: carbon monoxide
+
+was detected in the transmission spectrum of HD209458b
+
+All observations used a 0.2” slit, resulting in a spectral resolu-
+
+(Snellen et al. 2010) and in the thermal dayside spectrum of τ
+
+tion of R≈100,000, and the star was nodded along the slit in an
+
+Bo ötis b (Brogi et al. 2012; Rodler et al. 2012). These observa-ABBA pattern to subtract the background. The spectra around
+
+tions, conducted with the CRyogenic high-resolution InfraRed
+
+2.0 µm contain possible planet lines of H2O and CO2, whereas
+
+Echelle Spectrograph (CRIRES Kaeufl et al. 2004) on the Very the 2.3 µm region can be used to probe CO, H2O and CH4.
+
+Large Telescope (VLT) at a resolution of R≈100,000 target the
+
+On 13 July data was taken with an integration time of 4×15
+
+combined signal from individual lines in the CO 2.3 µm molec-
+
+seconds per nodding position. On 29 July the integration time
+
+ular band. The large variation in the planet velocity is used to
+
+was 5×20 seconds and on 21 August 4×20 seconds. All three
+
+disentangle its spectral features from the telluric and stellar con-
+
+observations spanned roughly 5 hours each.
+
+tamination. This also allows the determination of the orbital ve-
+
+The raw data was flat-fielded, background-subtracted, and
+
+locity of the planet, and therefore the orbital inclination and true
+
+optimally extracted using the standard CRIRES pipeline (version
+
+planet mass in the case of non-transiting planets. Recent results
+
+1.11.0). The data from the three nights, for each of the four de-
+
+from thermal dayside spectroscopy of 51 Pegasi b (Brogi et al.
+
+tectors, were analysed separately. In each case, a 1024× N matrix
+
+2013) are somewhat ambiguous. Although the first two nights was constructed from the N spectra. Bad columns in the matrix
+
+of data show a combined ∼6-σ detection from carbon monoxide
+
+(corresponding to certain pixels in the spectra) were identified
+
+plus water, no signal is detected in the third night. Although the
+
+by taking the standard deviation of each column and finding >5-
+
+signal on the third night was expected to be slightly weaker due
+
+σ outliers. These bad columns (of the order of 20 per detector)
+
+to the reduced quality of the data and contamination by stellar
+
+were masked in the rest of the analysis. Further individual bad
+
+lines, a complete absence was not expected based on the first
+
+pixels were replaced by spline-interpolated values.
+
+two nights. This would mean that either some yet unknown sys-
+
+The next step in the data reduction was to align all spectra
+
+tematics is affecting the data, or that time variability (by e.g.
+
+onto a common wavelength grid. For this purpose we calculated
+
+global weather patterns), plays a large role in the atmosphere of
+
+a template telluric transmission spectrum with water, carbon
+
+this object.
+
+dioxode and methane lines from HITRAN 2008 (Rothman et al.
+
+High-resolution spectroscopy has been attempted before for
+
+2009) using line-by-line calculations with a single model layer HD 189733 b. Using two nights of Keck/NIRSPEC observations
+
+and pressures, temperatures and gas concentrations relevant to
+
+at a resolution of ∼25,000, Barnes et al. (2010) identify a possi-Paranal. Since HD 189733A has significant CO lines in its spec-
+
+ble planet signal using a deconvolution method. However, they
+
+trum, we also calculated CO absorption lines at the stellar tem-
+
+could not make a strong claim due to the low significance of the
+
+perature using HITEMP absorption data (Rothman et al. 2010)
+
+result. Very recently, Rodler et al. (2013) revisited this dataset and scaled these relative to the telluric lines by comparisons with
+
+and claim a ∼3-σ detection of CO lines in HD 189733b.
+
+the data. We then Doppler-shifted the stellar CO lines accord-
+
+Here, we present high-resolution CRIRES observarions of
+
+ing to the Earth’s velocity, the known stellar systematic veloc-
+
+HD 189733 at 2.0 and 2.3 µm targeting absorption not only from
+
+ity and its planet-induced radial velocity variation (Triaud et al.
+
+CO, but also from CO2, H2O and CH4 in the planet’s day-side
+
+2009), and combined them with the telluric spectrum. This was spectrum. Section 2 describes the observations and data analysis
+
+then correlated with each measured spectrum to find the best-
+
+and Section 3 the cross-correlation procedure used to combine
+
+fitting second-order polynomial correction on our initial guess of
+
+the signal from the individual lines. Section 4 describes the re-
+
+the wavelengths of each pixel, where the polynomial represents
+
+sults, which are discussed in Section 5.
+
+a wavelength-dependent shift. Finally, the spectra were spline-
+
+interpolated onto a common wavelength grid.
+
+2. Observations and data analysis
+
+Before we searched for molecular features in the data using
+
+the cross-correlation technique, we first needed to remove tel-
+
+We observed HD 189733b as part of a large programme (ESO
+
+luric and stellar signatures. The telluric lines are static in posi-
+
+programme 186.C-0289, Snellen et al. 2011) to probe molecular tion, but vary in strength due to changes in the geometric airmass
+
+signatures in hot Jupiter atmospheres with CRIRES. CRIRES
+
+and variations in the water vapour content of the atmosphere.
+
+consists of four 1024×512-pixel Aladdin II detectors, separated
+
+The stellar lines are invariable in time to a high level, but slightly
+
+by small gaps of roughly 100 pixels. The Multi-Application
+
+change in position during the night due to variations in the radial
+
+Curvature Adaptive Optics system (MACAO, Arsenault et al.
+
+velocity component of the Paranal observatory with respect to
+
+2003) was employed to maximise the throughput of the slit.
+
+the star (mainly caused by the Earth’s rotation).
+
+Here, we use data taken during three nights, conducted at two
+
+In this work we analyse the data in a somewhat different way
+
+wavelength settings, centred at 2.0 and 2.3 µm. The data were
+
+than previously (Snellen et al. 2011; Brogi et al. 2012, 2013) to taken over a planet orbital phase-range near but not during sec-explore new ways of reducing this type of data. We also per-
+
+ondary eclipse to maximise the illumination of the planet and the
+
+formed the analysis with the previous method and found com-
+
+planet’s change in radial velocity (see Table 1 for more details).
+
+patible results (see Section 4.1). Instead of removing the telluric
+
+2
+
+
+
+de Kok et al.: CO in the atmosphere of HD 189733b
+
+contamination by fitting the columns in the matrix first with the
+
+geometric airmass and subsequently with the residual signals
+
+present in the strongest telluric lines, here we use singular value
+
+decompositions (SVD, e.g. Kalman 1996). For this we used the algorithm available in IDL. The SVD decomposes a matrix A
+
+into the following matrices:
+
+A = UWVT ,
+
+(1)
+
+where U is the matrix of left singular vectors, W a (by def-
+
+inition) diagonal matrix of singular values and V the matrix of
+
+right singular vectors. In our case the matrix A represents the ar-
+
+ray of spectra on a single detector, with the number of pixels and
+
+number of spectra as dimensions. The right singular vectors are
+
+the eigenvectors and the left singular vectors, scaled by the sin-
+
+gular values, indicate how each of the eigenvectors are weighted
+
+to form each observed spectrum. A convenient property of the
+
+SVD is that matrix A can be approximated in an optimal way us-
+
+ing only the largest few singular values, and setting the smaller
+
+singular values to zero (e.g. Andrews & Patterson 1975). Here, we do the reverse and set the largest singular values to zero to
+
+remove the signals that are static with time while affecting the
+
+moving planet signal as little as possible. Fig. 1 shows an example of a matrix of spectra (detector 2 on the night of 13 July
+
+2011) with progressive subtraction of the singular values for de-
+
+tector 2 at 2.3 µm. Examples of the left and right singular vectors
+
+are shown in Figs. 2 and 3.
+
+The left singular vectors corresponding to the first two sin-
+
+gular values of the 2.3 µm data show clear correlations with the
+
+signal level in the continuum and the airmass for all four detec-
+
+tors (see Figs. 2 and 4). Hence, the subtraction of the first two singular values is in effect very similar to the first steps used
+
+by Snellen et al. (2010) and Brogi et al. (2012, 2013). Also the third left singular vector is very similar for all four detectors.
+
+Its corresponding eigenvector (Fig. 3) indicates it is related to shifts and/or broadening of the lines in the spectrum and its behaviour with time is somewhat similar to parameters relevant to
+
+the adaptive optics performance (see Fig. 4). The only parameter in the headers that was similar to the fourth left singular vector
+
+is one of the temperature sensors in the instrument. The physical
+
+correspondances of these third and fourth left singular vectors is
+
+far from conclusive, with correlation coefficients of around 0.5
+
+Fig. 1. Example of stellar and telluric signal removal: the array
+
+between these vectors and the quantities plotted in Fig. 4, but of spectra (in ADU per second) for detector 2 at 2.3 µm on 13
+
+it does highlight the diagnostic value of the SVDC for tracking
+
+July 2011 after setting the first n singular values to zero, with n
+
+potential systematic effects in the measurements.
+
+being indicated above the panels.
+
+As a final step, we divide each column of the array of spectra
+
+by the square of the standard deviation. This prevents the cross-
+
+correlation analysis to be dominated by very noisy pixels.
+
+The model spectra are the result of line-by-line calculations
+
+using a range of parameterised pressure-temperature structures
+
+3. Correlation analysis
+
+(see below), H2-H2 collision-induced absorption (Borysow et al.
+
+2001; Borysow 2002) and absorption from a single trace
+
+We cross-correlated each reduced spectrum with model spec-
+
+gas. Line data for the trace gases are taken from HITEMP
+
+tra of exoplanet atmospheres with Doppler shifts ranging from
+
+2010 for H2O and CO (Rothman et al. 2010), HITRAN 2008
+
+-200 to +200 km/s relative to the expected planet radial velocity.
+
+for CH4 (Rothman et al. 2009) and HITEMP 1995 for CO2
+
+Orbital parameters of the system were taken from Triaud et al.
+
+(Rothman et al. 1995). A Voigt line-shape is used for calcula-
+
+(2009). In order to scan the parameter space and check for po-tion of the absorption. The atmospheric temperatures at pres-
+
+tential spurious correlation signals, we also performed our cal-
+
+sures higher than 0.1 bar, where we take a temperature of 1350
+
+culations for a wide range of amplitudes of the radial velocity
+
+K, are made to follow the best fitting temperature profiles of
+
+of the planet, Kp (50-200 km s−1). We assumed a circular orbit
+
+Madhusudhan & Seager (2009) and the temperature at a lower throughout the paper, which is reasonable given that the maxi-pressure p 1 is varied from 500 to 1500 K in steps of 500 K.
+
+mum offset in planet radial velocity for its possible small eccen-
+
+As such, we also included the option of weak thermal inver-
+
+tricity (see Triaud et al. 2009) is smaller than the velocity reso-sions at high altitudes. Between 0.1 and p 1 bar a constant lapse
+
+lution of CRIRES.
+
+rate (i.e. the rate of temperature change with log pressure) is as-
+
+3
+
+de Kok et al.: CO in the atmosphere of HD 189733b
+
+1
+
+2
+
+1.1
+
+10
+
+150
+
+w=410
+
+8
+
+2.2
+
+1.0
+
+140
+
+6
+
+2.0
+
+4
+
+130
+
+0.9
+
+2
+
+120
+
+1.8
+
+LSV (a.u.)
+
+LSV (a.u.)
+
+Airmass
+
+0
+
+0.8
+
+w=43621
+
+Median count 110
+
+-2
+
+1.6
+
+0
+
+20
+
+40
+
+60
+
+80
+
+100
+
+0
+
+20
+
+40
+
+60
+
+80
+
+100
+
+0
+
+20
+
+40
+
+60
+
+80
+
+100
+
+0
+
+20
+
+40
+
+60
+
+80
+
+100
+
+spectrum #
+
+spectrum #
+
+spectrum #
+
+spectrum #
+
+3
+
+4
+
+8
+
+22.83
+
+w=101
+
+w=49
+
+67.82
+
+6
+
+100
+
+67.80
+
+22.82
+
+4
+
+50
+
+67.78
+
+22.81
+
+2
+
+22.80
+
+67.76
+
+0
+
+0
+
+LSV (a.u.)
+
+LSV (a.u.)
+
+AO Strehl
+
+SV temp 22.79
+
+-2
+
+-50
+
+67.74
+
+22.78
+
+-4
+
+-100
+
+67.72
+
+0
+
+20
+
+40
+
+60
+
+80
+
+100
+
+0
+
+20
+
+40
+
+60
+
+80
+
+100
+
+0
+
+20
+
+40
+
+60
+
+80
+
+100
+
+0
+
+20
+
+40
+
+60
+
+80
+
+100
+
+spectrum #
+
+spectrum #
+
+spectrum #
+
+spectrum #
+
+Fig. 2. The first four left singular vectors for all four detectors
+
+Fig. 4. Instrument and environmental parameters possibly re-
+
+(black – detector 1; red – detector 2; green – detector 3; blue
+
+lated to the left singular vectors plotted in Fig. 2. The median
+
+– detector 4) at 2.3 µm on 13 July 2011, divided by their me-
+
+count is for detector 2 at 2.3 µm on 13 July 2011, AO Strehl
+
+dian value. The corresponding eigenvalues for detector 2 are also
+
+indicates the Strehl ratio from the adaptive optics system in per-
+
+given to indicate their relative strengths. These vectors can be
+
+cent and SV temp is one of the many temperature sensors on the
+
+compared to the parameters in Fig. 4.
+
+instrument, located at the slit viewer.
+
+1
+
+2
+
+-0.010
+
+0.15
+
+-0.015
+
+0.10
+
+are multiplied by this increase of correlation, and added together
+
+-0.020
+
+to form the total correlation signal.
+
+-0.025
+
+0.05
+
+RSV (a.u.)
+
+RSV (a.u.)
+
+-0.030
+
+0.00
+
+In the correlation analysis for CO, there are still some resid-
+
+uals originating from the stellar spectrum. This is not surprising,
+
+0
+
+200
+
+400
+
+600
+
+800
+
+0
+
+200
+
+400
+
+600
+
+800
+
+pixel #
+
+pixel #
+
+since the star’s radial velocity slightly changes with time due to
+
+3
+
+4
+
+the Earth’s rotation and the star has significant CO lines in its
+
+0.10
+
+spectrum. Fortunately, the velocities of the planet are at least 20
+
+0.15
+
+0.10
+
+0.05
+
+km/s offset from that of the star for the phases observed, so the
+
+0.05
+
+0.00
+
+strongest stellar residuals do not affect the correlation signal of
+
+0.00
+
+-0.05
+
+the planet. When combining the correlation signals of the differ-
+
+RSV (a.u.) -0.05
+
+RSV (a.u.)
+
+ent spectra, we mask the velocities that are within 5 km/s of the
+
+-0.10
+
+-0.10
+
+stellar velocity after the cross-correlation. Note that this does not
+
+0
+
+200
+
+400
+
+600
+
+800
+
+0
+
+200
+
+400
+
+600
+
+800
+
+pixel #
+
+pixel #
+
+significantly affect our cross-correlation signals at the expected
+
+planet velocity, but only within the region of the expected stellar
+
+Fig. 3. The first four right singular vectors, or eigenvectors, for
+
+signals.
+
+detector 2 at 2.3 µm on 13 July 2011.
+
+As more singular values are subtracted from the data, parts
+
+of the planet signal may also be removed. Hence, there is an op-
+
+timum number of subtractions that will lead to the best recovery
+
+of the planet signal. We tested this effect by again inserting arti-
+
+sumed and p 1 is varied from 10−1.5-10−4 in multiplication steps
+
+ficial planet signals and evaluating the correlation signal for the
+
+of 100.5. At pressures lower than p 1 a uniform temperature is
+
+different numbers of reduced singular values. Fig. 5 illustrates assumed. Volume mixing ratios of the gases ranged from 10−6-how the planet signal in a single detector first becomes apparent
+
+10−3 in multiplication steps of 100.5.
+
+when the stellar and telluric signals are removed, and then slowly
+
+The correlation analysis was performed for each of the four
+
+disappears as more and more singular values are removed. The
+
+detectors separately. To combine the correlation signals obtained
+
+slow drop of correlation with more subtracted singular values
+
+from different spectra and detectors we first determined how to
+
+rises from the fact that there is only very little power in each
+
+weigh their contributions. We did this by inserting an artificial
+
+of these higher singular values. The correlation as a function of
+
+planet signal in the wavelength-aligned data for the system ve-
+
+number of subtracted singular values is actually very similar to
+
+locity and Kp under consideration, and perform the same data
+
+the correlation of the data without inserted signal, but the corre-
+
+reduction as the original data. If the data with inserted signal
+
+lation values are higher. For each detector, we chose the number
+
+gives a large increase in correlation value for a particular spec-
+
+of singular values to subtract according to the highest correla-
+
+trum, this spectrum is thus expected to give a high signal also
+
+tion of the inserted signal with respect to the correlation noise,
+
+in the original data. Hence, the increase of the correlation when
+
+when combined over the entire night. Fig. 5 also illustrates what inserting the artificial planet signal can be used as a weighing
+
+happens to the signal if negative planet signals are inserted. Such
+
+factor to favour spectra or detectors for which a larger signal is
+
+a negative signal would correspond to spectra with lines seen in
+
+expected. The correlation values for each spectrum and detector
+
+emission instead of absorption.
+
+4
+
+de Kok et al.: CO in the atmosphere of HD 189733b
+
+6
+
+1x
+
+4
+
+0x
+
+2
+
+-1x
+
+0
+
+Correlation (sigma)
+
+-2
+
+-2x
+
+-4
+
+0
+
+5
+
+10
+
+15
+
+Number of singular values
+
+Fig. 5. Total correlation at the planet position as a function of
+
+number of subtracted singular values for detector 2 at 2.3 µm
+
+on 13 July 2011 for the planet model giving the highest corre-
+
+lation. Different lines indicate different multiplication factors of
+
+the inserted planet signal (see text), as indicated by the labels.
+
+Fig. 6. Combined cross-correlation values for all four detectors
+
+as a function of system velocity and Kp. The dashed line indi-
+
+cates where the stellar CO lines are expected to leave the largest
+
+4. Results
+
+contamination signal. The area in between the dashed lines can
+
+also be contaminated by stellar residuals. The dotted lines indi-
+
+Our correlation analysis yields a detection of carbon monoxide
+
+cate the system velocity of HD 189733 and the peak position of
+
+at 2.3 µm, which is presented below. No significant signals are
+
+Kp.
+
+detcted for the other bands and molecules, of which the implica-
+
+tions are discussed in Section 4.2.
+
+0.0014
+
+4.1. Detection of CO
+
+0.0013
+
+0.0012
+
+s
+
+The cross-correlation assuming different system velocities and
+
+/F p 0.0011
+
+F
+
+values of the planet radial velocity K
+
+0.0010
+
+p for our best CO template
+
+0.0009
+
+are shown in Fig. 6. The best CO template itself is shown in 0.0008
+
+Fig. 7. A positive correlation value (black) means in this case 2.29
+
+2.30
+
+2.31
+
+2.32
+
+2.33
+
+2.34
+
+2.35
+
+that the CO lines are apparent in absorption, as in Fig. 7, indi-Wavelength (micron)
+
+cating a non-inverted temperature profile over the probed pres-
+
+sure range. The correlation shows a 5.0-σ maximum at the ex-
+
+1600
+
+pected system velocity, within the range of Kp expected from the
+
+1550
+
+measured radial velocity of the star and its estimated mass from
+
+1500
+
+spectral modelling (Triaud et al. 2009). The significance was es-1450
+
+timated by the peak cross-correlation value divided by the noise
+
+1400
+
+in the cross-correlation values in Fig. 6 at system velocities away
+
+2.29
+
+2.30
+
+2.31
+
+2.32
+
+2.33
+
+2.34
+
+2.35
+
+Brightness temperature (K)
+
+from the planet signal. The signal is the combination of all four
+
+Wavelength (micron)
+
+detectors, although detector 1 does not show a clear signal. Note
+
+however that detector 1 has a low weight, since artificially in-
+
+Fig. 7. Template spectrum that gives the best correlation value.
+
+jected planet spectra give only very faint retrieved signals. This
+
+Note that we are not sensitive to the continuum level of the spec-
+
+is consistent with the CO spectrum, which shows less lines in
+
+trum. For the sake of clarity, stellar lines are ignored in the cal-
+
+the wavelength range covered by detector 1.
+
+culation of the planet-to-star contrast Fp/ Fs. Brackets indicate
+
+The observed CO signal is detected at Kp = 154+4 km s−1
+
+the wavelength ranges covered by the four detectors.
+
+−3
+
+and V sys = -2 km s−1, both consistent with the literature values
+
+for the orbital and stellar parameters of the system (Triaud et al.
+
+2009). We estimated the statistical significance of the signal in several ways. First of all, we tested how the distribution of
+
+distribution (Fig. 9) shows it exhibits no significant deviation cross-correlation values as calculated for the 110 spectra com-from Gaussianity. Only detector 1 shows some non-Gaussian
+
+pare to a Gaussian distribution. A histogram of the correlation
+
+behaviour using the optimal number of singular values, which
+
+values as obtained from detectors 2-4 is shown in Fig. 8. The improved when more singular values were subtracted. Since we
+
+interval of the system velocities over shich the histrogram was
+
+did not find a significant signal in this detector and it is weighted
+
+plotted was chosen such that the area of the stellar signal was
+
+very lightly compared to the other detectors, and because the ex-
+
+avoided and a large sample was obtainted. The best fit of the
+
+tra singular values effectively only remove very little of the data,
+
+histogram to a Gaussian distribution is overplotted, showing a
+
+the additional subtraction of the singular values had no impact
+
+very good agreement. A further analysis of the quantiles of this
+
+on the final result.
+
+5
+
+de Kok et al.: CO in the atmosphere of HD 189733b
+
+2.0•104
+
+10000.0
+
+1000.0
+
+1.5•104
+
+100.0
+
+1.0•104
+
+Occurrence
+
+Occurrence
+
+10.0
+
+5.0•103
+
+1.0
+
+0.1
+
+-0.2
+
+-0.1
+
+0.0
+
+0.1
+
+0.2
+
+-0.2
+
+-0.1
+
+0.0
+
+0.1
+
+0.2
+
+Correlation value
+
+Correlation value
+
+Fig. 8. Histogram of correlation values outside the expected
+
+Fig. 10. Histogram of correlation values away from the expected
+
+planet velocity (+10-400 km s−1 with respect to the planet) for
+
+planet velocity (+10-400 km s−1 with respect to the planet), and
+
+detectors 2-4 combined. Error bars are the suare root of the num-
+
+those at the planet velocity (gray line, scaled), for detectors 2-4
+
+ber of occurrences in each bin. The dotted line shows a Gaussian
+
+combined.
+
+fit.
+
+Q-Q Normal probability plot
+
+velocity for all four detectors combined. The line contrast for
+
+4
+
+the deepest CO lines determined in this way is (4.5±0.9)×10−4,
+
+which corresponds roughly to the signal from the template spec-
+
+trum (see Fig. 7). This is the value for the model spectra and does not include the convolution to the instrument resolution. The line
+
+2
+
+contrast including convolution gives a value of (3.4±0.7)×10−4.
+
+This line contrast can be interpreted as the difference of the line
+
+cores with respect to the broadband continuum and can be used
+
+0
+
+as an additional constraint on the temperature profile and CO
+
+concentration (see the discussion in Section 5). The continuum
+
+Observed quantiles
+
+level will be close to the broadband secondary eclipse depth
+
+-2
+
+around 2.3 µm for this transiting planet.
+
+Using the data analysis method we presented previously
+
+(Snellen et al. 2010; Brogi et al. 2012, 2013) we found a 4.8-σ
+
+-4
+
+detection of the CO signal, which is consistent with the results
+
+-4
+
+-2
+
+0
+
+2
+
+4
+
+presented here. Hence, either method can be used equally well,
+
+Theoretical quantiles
+
+although the method presented here is perhaps less ad hoc and
+
+Fig. 9. Quatiles of a normal distribution versus the measured
+
+allows for a more objective treatment of the data.
+
+quantiles of Fig. 8. The gray line indicates a perfect normal distribution. The two agree well up till the 4-σ level, which is de-
+
+4.2. Upper limits for CO2,H2O and CH4
+
+termined by the number of available sampling points.
+
+Besides CO, we also searched for signals from H2O and CH4
+
+in the 2.3 µm data, and CO2 and H2O in the 2.0 µm data, but
+
+An additional test we performed was the Welch T-test (Welch
+
+did not find a significant signal. We determined upper limits of
+
+1947), comparing the planet signal distribution with the correla-the line contrast by inserting inverted models until a significance
+
+tion distribution away from the expected planet velocities (see
+
+value of -3σ was reached at the planet velocity for all four detec-
+
+Fig. 10). Unfortunately, we have far less spectra available com-tors combined. We used the same number of singular values as
+
+pared to Brogi et al. (2012, 2013), who performed the same test, for the CO analysis. The resulting upper limits of the maximum
+
+so the sampling of the correlations at the planet velocity is worse
+
+model (unconvolved) line contrasts is 2.8×10−3 for H2O and
+
+here. Nevertheless, we can reject the null-hypothesis that the two
+
+8.3×10−4 for CH4. The latter is comparable to the value of the
+
+samples are drawn from the same distribution at a 4.2-σ confi-
+
+medium-resolution secondary eclipse depth of 8×10−4, i.e. the
+
+dence level.
+
+total planet-to-star flux contrast at these wavelengths, as mea-
+
+Our measurements are not sensitive to the continuum level
+
+sured with NICMOS on the HST by Swain et al. (2009). Since of the planet spectrum, since we remove any broadband signal in
+
+the continuum level would be close to the medium-resolution
+
+our data analysis. We are only sensitive to the depths of the nar-
+
+planet/star flux contrast, this would imply that the flux in the
+
+row absorption lines, which are the parts of the planet spectrum
+
+CH4 lines would have to drop to zero for them to be detectable at
+
+that show the Doppler shift. We determined the line contrast (the
+
+the determined upper limit of the line depth. The contrast of the
+
+depth of the deepest lines with respect to the continuum, divided
+
+best-fitting CO lines is ∼ 4.5×10−4, so CH4 would have to be sig-
+
+by the stellar flux) by inserting the model that gives the strongest
+
+nificantly more abundant than CO for this to happen, given their
+
+signal times different (negative) scaling factors (see Section 3)
+
+similar line strengths in this region. Also, the upper atmosphere
+
+until a significance value of 0±1 σ was reached at the planet
+
+of HD 189733b would need to be extremely cold (of the order
+
+6
+
+
+
+
+
+de Kok et al.: CO in the atmosphere of HD 189733b
+
+of a few hundred Kelvin). Neither of them is very likely (see
+
+Table 2. Stellar and orbital parameters taken from Triaud et al.
+
+e.g. Madhusudhan & Seager 2009; Moses et al. 2013). Hence,
+
+(2009) and derived from our measurements.
+
+the upper limit on the line contrast of CH4 does not constrain
+
+the abundance in a meaningful way if the measured medium-
+
+Parameter (unit)
+
+Value
+
+resolution planet-to-star contrast is correct.
+
+Assumed parameters (Triaud et al., 2009):
+
+Although we have collected two nights of data at 2.0 µm,
+
+Ks (m s−1)
+
+201.96 +1.07
+
+−0.63
+
+we were less sensitive to atmospheric signals in this wavelength
+
+P (days)
+
+2.21857312+0.00000036
+
+−0.00000076
+
+range due to a combination of more telluric absorption and a
+
+i (◦)
+
+85.508+0.10
+
+−0.05
+
+smaller contrast between the planet and the star. Fig. 11 shows Measured parameters:
+
+an example spectrum of the 2.0 µm data. The spectra on detec-
+
+Kp (km s−1)
+
+154+4
+
+−3
+
+tors 1 and 4 are dominated by telluric CO
+
+Derived parameters:
+
+2 lines, greatly reducing
+
+the potential for retrieving exoplanet signals. In detectors 2 and 3
+
+Ms ( M⊙)
+
+0.846+0.068
+
+−0.049
+
+also water lines are evident. In general, the telluric transmission
+
+Mp ( M Jup)
+
+1.162+0.058
+
+−0.039
+
+is significantly lower than around 2.3 µm. For this wavelength
+
+setting we ignored detector 4 due to the much lower count level.
+
+The SVD analysis could reduce the systematic signals down to
+
+5. Discussion and conclusions
+
+similar levels as in Fig. 1. Again, models with varying temperature profiles and volume mixing ratios of H
+
+Using high resolution spectra from CRIRES on the VLT at
+
+2O and CO2 were in-
+
+serted with K
+
+orbital phases between 0.38-0.48, we detect carbon monox-
+
+p = 154 km s−1 to find 3-σ upper limits of 8.7×10−4
+
+for H
+
+ide in the day-side atmosphere of HD 189733b at a 5-σ
+
+2O and 1.8×10−3 for CO2.
+
+significance. From Spitzer data the presence of CO was al-
+
+ready suspected (Barman 2008; Désert et al. 2009) , although more wider scans of the parameter space revealed no use-80
+
+ful constraints on CO based on the Spitzer secondary eclipse
+
+data alone (Madhusudhan & Seager 2009). HST/NICMOS secondary eclipse data do show large CO volume mixing ra-
+
+tios (∼10−4-10−2) (Swain et al. 2009; Madhusudhan & Seager
+
+60
+
+2009; Lee et al. 2012), although past NICMOS results have been received with some scepticism (e.g. Gibson et al. 2011).
+
+Waldmann et al. (2012) claim to detect a strong planet emis-40
+
+sion feature at 2.3 µm using low-resolution groundbased spec-
+
+ADU/sec
+
+troscopy, similar to the controversial signal found at 3.2 µm by
+
+Swain et al. (2010), and also suggest it could be non-LTE emis-20
+
+sion. Due to the fact that no proper physical model exists yet for
+
+this emission, we could not perform a detailed search for this
+
+emission in our data. However, no obvious high-resolution sig-
+
+nal, expected from the ∼2x10−3 low resolution signal seen by
+
+0
+
+1.97
+
+1.98
+
+1.99
+
+2.00
+
+Waldmann et al., is present in our data. Figure 1 indicates that
+
+Wavelength (micron)
+
+single lines cannot be seen above the 1% level in our data.
+
+The CRIRES measurements are not sensitive to the contin-
+
+Fig. 11. Example spectrum of the data at 2.0 µm.
+
+uum level of the planet spectrum, since we remove any broad-
+
+band signal in our data analysis. Instead, we determine an uncon-
+
+volved line contrast (the depth of the deepest lines with respect
+
+to the continuum, divided by the stellar flux) of (4.5±0.9)×10−4
+
+for the strongest CO lines. This line contrast indicates the differ-
+
+4.3. Planet system parameters
+
+ence between the thermal flux coming from the continuum level
+
+at high pressure and the flux from the line cores, which probe
+
+Since we now have a measure of the velocity and the orbital in-
+
+very low pressures (see Fig. 12). The line contrast thus depends clination of both the star and the planet around their common
+
+on the difference in temperatures at the pressures of the contin-
+
+barycentre, model-independent estimates of their masses can be
+
+uum and the line cores. Already it is clear that there is a large
+
+obtained in the same way as has been done for stellar eclips-
+
+degeneracy in the temperature structure of the atmosphere that
+
+ing binaries for more than a century (e.g. Torres et al. 2010).
+
+can reproduce a certain line contrast, since different sets of tem-
+
+Using the values and uncertainties from Triaud et al. (2009, see peratures can have the same difference in flux. Furthermore, the
+
+Table 2) for the amplitude of the stellar radial velocity vari-
+
+abundance of CO adds another ambiguity, since increasing the
+
+ations, planet orbital inclination and period, we determine a
+
+CO abundance will decrease the pressure that is probed by the
+
+stellar mass of Ms = 0.846+0.068 M
+
+−0.049
+
+⊙ and a planet mass of
+
+line cores. It is therefore uncertain at what pressure the flux of
+
+Mp = 1.162+0.058 M
+
+−0.039
+
+Jup. The stellar mass is consistent with that
+
+the line cores originates. This also means we cannot determine
+
+found by Triaud et al. (2009) ( Ms = 0.823+0.022 M
+
+−0.029
+
+⊙ and Mp =
+
+CO abundances from line contrasts alone. Fig. 13 illustrates this 1.138+0.022 M
+
+point. It shows the maximum line contrasts that were obtained
+
+−0.025
+
+Jup). In principle, if these CRIRES observations are
+
+repeated on both sides of the secondary eclipse (phases higher
+
+in our model grid (see Section 3). Note that in this grid we kept
+
+and lower than 0.5) and also at somewhat higher planet radial
+
+temperatures at pressures above 0.1 bar fixed, meaning we ba-
+
+velocities (phases closer to 0.25 or 0.75), the uncertainty in stel-
+
+sically fixed the continuum level, already reducing part of the
+
+lar mass can be reduced to a level of ∼1%. This issue is further
+
+possible degeneracies. Furthermore, our grid only covered a se-
+
+discussed in Section 5.
+
+lected portion of the parameter space. A lower limit on the line
+
+7
+
+de Kok et al.: CO in the atmosphere of HD 189733b
+
+contrast comes from an isothermal atmosphere, which would not
+
+14
+
+show any lines (zero contrast). Fig. 13 shows that there is prac-tically no dependence of the range of possible line contrasts on
+
+12
+
+the CO volume mixing ratio. Hence, more information is needed
+
+before the CO abundance can be determined from these kinds
+
+10
+
+of high spectral resolution measurements, most notably the tem-
+
+)-4
+
+perature profiles covering pressures from the continuum level
+
+8
+
+to the low pressures of the line cores. Constraints on the tem-
+
+perature profile can be obtained by measuring the thermal flux
+
+6
+
+(or secondary eclipse depths) at a range of wavelengths, prob-
+
+Line contrast (10
+
+ing a range of pressures due to differences in gas absorption
+
+4
+
+(e.g. Madhusudhan & Seager 2009; Line et al. 2012; Lee et al.
+
+2012). However, lower resolution measurements do not probe 2
+
+the low pressures of the line cores well. Also, there is still a
+
+degeneracy with absolute gas abundances, since this determines
+
+0
+
+10-5
+
+10-4
+
+10-3
+
+the pressure levels that are probed. Ideally, one would have a
+
+CO VMR
+
+single gas for which we know (or can estimate reliably) the ab-
+
+solute abundance, and which probes a wide range of pressures
+
+Fig. 13. The maximum line contrasts (solid line) as a function of
+
+from absorption lines or bands of different strengths. From mea-
+
+CO volume mixing ratio in our model grid (see Section 3). The
+
+surements of this gas at different wavelengths the temperature
+
+minimum line contrast in a planetary atmosphere is zero for an
+
+structure can then be determined, if the variation of the gas
+
+isothermal atmosphere. Dashed lines show our determined limits
+
+abundance with pressure is known. CO2 plays this role in the
+
+on the CO line contrast.
+
+Venus atmosphere and CH4 in the atmospheres of Jupiter, Saturn
+
+and Titan. Obtaining absolute gas abundances for giant exo-
+
+planet atmospheres is possible using transit (transmission) mea-
+
+surements are consistent within their reported 1-σ error bars.
+
+surements if the H2 Rayleigh scattering slope is measured (e.g.
+
+Rodler et al. (2013) find a CO line contrast of 1.8×10−4 at a spec-
+
+Benneke & Seager 2012), although this signature might be diffi-tral resolution of R=25,000 with NIRSPEC at Keck. Assuming
+
+cult to distinguish from that of small haze particles. In summary,
+
+that the lines are unresolved, this translates to a line contrast of
+
+obtaining absolute gas abundances from line contrasts such as
+
+∼7×10−4 at the CRIRES resolution, which is more than 50%
+
+the ones we present here is difficult, but the line contrasts can be
+
+higher than what we find in our study. This may suggest that
+
+used as an additional constraint to reduce the uncertainty in re-
+
+the reliability of the Keck signal is somewhat overestimated.
+
+trievals. However, if multiple gases would be detected in a single
+
+However, the error bars on the line contrast of Rodler et al.
+
+high resolution observation, this would make it possible to de-
+
+(2013) will probably be large, although these are not given in termine the relative abundances of these gases, since they would
+
+their paper. Rodler et al. (2013) suggest a possible low CO abun-both be reliant on the same temperature profile with the same
+
+dance based on their analysis of the Keck data. Our line con-
+
+continuum level at the same time. There might still be some de-
+
+trast is potentially even lower, but unfortunately we cannot yet
+
+generacy caused by the line cores of the two gases probing two
+
+draw conclusions on the CO abundance based on the line con-
+
+different ranges of pressures, but these pressure ranges are likely
+
+trast alone (see the discussion above). Taking their 3-σ detection
+
+to overlap.
+
+using 13 hours of NIRSPEC observations at face value, the 5-
+
+σ detection presented here implies that CRIRES is a factor 7
+
+more efficient. We attribute this to the high spectral resolution
+
+10-6
+
+and stability of CRIRES, and the well-performing adaptive op-
+
+tics system on the VLT.
+
+10-5
+
+Based on the available secondary eclipse data, retrieval
+
+methods favour temperature profiles that decrease in tempera-
+
+10-4
+
+ture as pressure decreases, i.e. a temperature profile without an
+
+inversion layer (Madhusudhan & Seager 2009; Line et al. 2012;
+
+Lee et al. 2012). However, in recent work Pont et al. (2012) ar-10-3
+
+gue that, based on their transmission measurements and im-
+
+Pressure (bar)
+
+proved analysis of secondary eclipse data, HD 189733b could
+
+10-2
+
+also have temperatures that are increasing with decreasing pres-
+
+sure. This would then be the result of an optically thick haze
+
+10-1
+
+layer, for which they see the signature in the transit measure-
+
+ments. However, our detection of CO shows that the tempera-
+
+100
+
+ture profile is not inverted at the pressures probed by the CO
+
+2.29
+
+2.30
+
+2.31
+
+2.32
+
+2.33
+
+2.34
+
+lines (10−5-10−3 bar for a CO volume mixing ratio of 10−4, as
+
+Wavelength (micron)
+
+seen in Fig. 12, and roughly an order of magnitude lower pressures for a CO volume mixing ratio of 10−3) and that the CO
+
+Fig. 12. Normalised contribution functions for a model spectrum
+
+lines are not obscured by an optically thick haze layer. In prin-
+
+with CO at a volume mixing ratio of 10−4. These show where in
+
+ciple it is possible that we are only seeing the cores of the CO
+
+the atmosphere the thermal flux is emitted for each wavelength.
+
+lines sticking out above the haze in a higher part of the atmo-
+
+sphere where the temperatures decrease again with altitude, but
+
+In comparing our results with the claimed detection by
+
+this would require large CO volume mixing ratios (> 10−4) if
+
+Rodler et al. (2013), we note that the planet radial velocity mea-the temperature profile of Pont et al. (2012), which shows an 8
+
+de Kok et al.: CO in the atmosphere of HD 189733b
+
+inversion down to at least 0.1 mbar, is correct. Such a high
+
+Acknowledgements. This work was funded by the Netherlands Organisation
+
+CO abundance with absorption features above the haze layer
+
+for Scientific Research (NWO). We are thankful to the ESO staff of Paranal
+
+would then also be visible around 5 µm, where CO absorp-
+
+Observatory for their support during the observations and we thank the referee
+
+for his or her insightful comments.
+
+tion is stronger than at 2.3 µm. Such a CO feature might in-
+
+deed be visible in Spitzer data (Knutson et al. 2012). An optically thick haze layer would also require a cold atmospheric
+
+References
+
+layer above the haze layer, which is contrary to the conclusions
+
+of Huitson et al. (2012). Hence, we conclude that the haze layer Andrews, H. C. & Patterson, C. L. 1975, The Amer Math Monthly, 82, 1
+
+Arsenault, R., Alonso, J., Bonnet, H., et al. 2003, in Society of Photo-Optical
+
+seen by Pont et al. (2008); Sing et al. (2009); Pont et al. (2012)
+
+Instrumentation Engineers (SPIE) Conference Series, Vol. 4839, Society of
+
+is either optically thin when seen at normal incidence angles and
+
+Photo-Optical Instrumentation Engineers (SPIE) Conference Series, ed. P. L.
+
+that consequently there is no temperature inversion in the mid-
+
+Wizinowich & D. Bonaccini, 174–185
+
+dle atmosphere, or that the haze layer is optically thick, but low
+
+Barman, T. S. 2008, ApJ, 676, L61
+
+Barnes, J. R., Barman, T. S., Jones, H. R. A., et al. 2010, MNRAS, 401, 445
+
+enough for CO lines to be visible.
+
+Benneke, B. & Seager, S. 2012, ApJ, 753, 100
+
+Birkby, J., Nefs, B., Hodgkin, S., et al. 2012, MNRAS, 426, 1507
+
+We could derive only upper limits for the line contrasts of
+
+Borysow, A. 2002, A&A, 390, 779
+
+H2O, CO2 and CH4: 8.7×10−4 for H2O and 1.8×10−3 for CO2
+
+Borysow, A., Jorgensen, U. G., & Fu, Y. 2001, J. Quant. Spectro. Rad. Trans.,
+
+at 2.0 µm and 2.8×10−3 for H
+
+68, 235
+
+2O and 8.3×10−4 for CH4 at 2.3
+
+µm. Future observations, also at more optimal wavelengths, will
+
+Brogi, M., Snellen, I. A. G., de Kok, R. J., et al. 2012, Nature, 486, 502
+
+Brogi, M., Snellen, I. A. G., de Kok, R. J., et al. 2013, ApJ, 767, 27
+
+be needed to more effectively search for these gases and assess
+
+Chabrier, G., Gallardo, J., & Baraffe, I. 2007, A&A, 472, L17
+
+their relative abundances. Less telluric absorption and a higher
+
+Charbonneau, D., Knutson, H. A., Barman, T., et al. 2008, ApJ, 686, 1341
+
+planet-to-star contrast would be benificial in these observations.
+
+Deming, D., Harrington, J., Seager, S., & Richardson, L. J. 2006, ApJ, 644, 560
+
+However, it is not straightforward to identify an optimal wave-
+
+Désert, J.-M., Lecavelier des Etangs, A., Hébrard, G., et al. 2009, ApJ, 699, 478
+
+Doyle, L. R., Carter, J. A., Fabrycky, D. C., et al. 2011, Science, 333, 1602
+
+length for these observations. For instance, the planet-to-star
+
+Gibson, N. P., Aigrain, S., Pont, F., et al. 2012, MNRAS, 422, 753
+
+contrast is better at longer wavelengths, but there the sky back-
+
+Gibson, N. P., Pont, F., & Aigrain, S. 2011, MNRAS, 411, 2199
+
+ground increases. Also, there is a trade-off between targeting
+
+Grillmair, C. J., Burrows, A., Charbonneau, D., et al. 2008, Nature, 456, 767
+
+strong lines in the planet spectrum, while avoiding strong lines in
+
+Huitson, C. M., Sing, D. K., Vidal-Madjar, A., et al. 2012, MNRAS, 422, 2477
+
+the telluric spectrum. A sensitivity study covering the CRIRES
+
+Irwin, J. M., Quinn, S. N., Berta, Z. K., et al. 2011, ApJ, 742, 123
+
+Kaeufl, H.-U., Ballester, P., Biereichel, P., et al. 2004, in Society of Photo-Optical wavelength range, using realistic instrument performance and
+
+Instrumentation Engineers (SPIE) Conference Series, Vol. 5492, Society
+
+telluric absorption spectra, is needed to determine the optimal
+
+of Photo-Optical Instrumentation Engineers (SPIE) Conference Series, ed.
+
+wavelengths for detection of these gases using high resolution
+
+A. F. M. Moorwood & M. Iye, 1218–1227
+
+spectroscopy. Note that the optimal observing wavelengths may
+
+Kalman, D. 1996, College Math Journal, 27, 2
+
+Knutson, H. A., Charbonneau, D., Cowan, N. B., et al. 2009, ApJ, 690, 822
+
+differ for different targets.
+
+Knutson, H. A., Lewis, N., Fortney, J. J., et al. 2012, ApJ, 754, 22
+
+Lee, J.-M., Fletcher, L. N., & Irwin, P. G. J. 2012, MNRAS, 420, 170
+
+From the measured radial velocity of Kp = 154+4 km s−1
+
+−3
+
+Line, M. R., Zhang, X., Vasisht, G., et al. 2012, ApJ, 749, 93
+
+we derive a stellar mass of M
+
+L ópez-Morales, M. & Ribas, I. 2005, ApJ, 631, 1120
+
+s = 0.846+0.068 M
+
+−0.049
+
+⊙ and a planet
+
+Madhusudhan, N. & Seager, S. 2009, ApJ, 707, 24
+
+mass of Mp = 1.162+0.058 M
+
+−0.039
+
+Jup, independent of stellar spectral
+
+Mandell, A. M., Drake Deming, L., Blake, G. A., et al. 2011, ApJ, 728, 18
+
+modelling. These values are consistent with previously known
+
+Morales, J. C., Gallardo, J., Ribas, I., et al. 2010, ApJ, 718, 502
+
+values and their errors are somewhat larger. However, combin-
+
+Morales, J. C., Torres, G., Marschall, L. A., & Brehm, W. 2009, ApJ, 707, 671
+
+ing these results with possible future observations at phases
+
+Moses, J. I., Madhusudhan, N., Visscher, C., & Freedman, R. S. 2013, ApJ, 763,
+
+25
+
+larger than 0.5, as well as phases closer to 0.25 and 0.75, would
+
+Pont, F., Knutson, H., Gilliland, R. L., Moutou, C., & Charbonneau, D. 2008,
+
+help significantly in reducing the error on Kp, and hence in
+
+Mon. Not. R. Astron. Soc., 385, 109
+
+the masses of the star and planet (e.g. Brogi et al. 2013). An Pont, F., Sing, D. K., Gibson, N. P., et al. 2012, ArXiv e-prints
+
+error in K
+
+Redfield, S., Endl, M., Cochran, W. D., & Koesterke, L. 2008, ApJ, 673, L87
+
+p of 1 km s−1 would result in an error on the stel-
+
+lar mass of 0.017 M
+
+Ribas, I. 2006, Ap&SS, 304, 89
+
+⊙, which is more precise than the cur-
+
+Rodler, F., K ürster, M., & Barnes, J. R. 2013, ArXiv e-prints
+
+rent value derived from spectral modelling. The ability to treat
+
+Rodler, F., Lopez-Morales, M., & Ribas, I. 2012, ApJ, 753, L25
+
+transiting planet systems in the same manner as double-lined
+
+Rothman, L. S., Gordon, I., & 42 colleagues. 2009, J. Quant. Spectro. Rad.
+
+eclipsing binaries (DLEBs) allows a model-independent mea-
+
+Trans., 96, 139
+
+surement of the stellar and planet masses and radii, which is
+
+Rothman, L. S., Gordon, I. E., Barber, R. J., et al. 2010, J. Quant. Spectro. Rad.
+
+Trans., 111, 2139
+
+particularly useful for planets with M-dwarf host stars. Precise
+
+Rothman, L. S., Wattson, R. B., Gamache, R., Schroeder, J. W., & McCann, A.
+
+dynamical measurements of the masses and radii of low-mass
+
+1995, Society of Photo-Optical Instrumentation Engineers (SPIE) Conference
+
+stars in DLEBs are not well-reproduced by stellar evolutions
+
+Series, 2471, 105
+
+models and have radii that are up to 15% larger than predicted
+
+Sing, D. K., Désert, J., Lecavelier Des Etangs, A., et al. 2009, A&A, 505, 891
+
+(López-Morales & Ribas 2005; Ribas 2006). Strong magnetic Snellen, I., de Kok, R., de Mooij, E., et al. 2011, in IAU Symposium, Vol. 276,
+
+IAU Symposium, ed. A. Sozzetti, M. G. Lattanzi, & A. P. Boss, 208–211
+
+fields in the short-period low-mass DLEBs are thought to be re-
+
+Snellen, I. A. G., de Kok, R. J., de Mooij, E. J. W., & Albrecht, S. 2010, Nature, sponsible for the radius inflation (see e.g. Chabrier et al. 2007;
+
+465, 1049
+
+Morales et al. 2010). Even in higher mass G- and K-dwarfs, Swain, M. R., Deroo, P., Griffith, C. A., et al. 2010, Nature, 463, 637
+
+strong magnetic activity in the stars results in disagreement with
+
+Swain, M. R., Vasisht, G., & Tinetti, G. 2008, Nature, 452, 329
+
+Swain, M. R., Vasisht, G., Tinetti, G., et al. 2009, ApJ, 690, L114
+
+stellar models (Morales et al. 2009). However, in wider separa-Torres, G., Andersen, J., & Giménez, A. 2010, A&A Rev., 18, 67
+
+tion M-dwarf DLEBs with magnetically inactive low-mass stars,
+
+Triaud, A. H. M. J., Queloz, D., Bouchy, F., et al. 2009, A&A, 506, 377
+
+the radii are still inflated (Irwin et al. 2011; Doyle et al. 2011), Waldmann, I. P., Tinetti, G., Drossart, P., et al. 2012, ApJ, 744, 35
+
+with no real convergence towards stellar models at longer pe-
+
+Welch, M. B. 1947, Biometrika, 34, 28
+
+riods (Birkby et al. 2012). Obtaining Kp for planets transiting M-dwarfs removes the uncertainty in stellar models and gives a
+
+direct and accurate characterisation of the star-planet system.
+
+9
+
+
+
+
+
+Document Outline
+
+
+1 Introduction
+
+2 Observations and data analysis
+
+3 Correlation analysis
+
+4 Results 4.1 Detection of CO
+
+4.2 Upper limits for CO2,H2O and CH4
+
+4.3 Planet system parameters
+
+
+
+
+
+5 Discussion and conclusions
+
+
+
+
+

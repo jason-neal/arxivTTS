@@ -1,0 +1,447 @@
+Wavelength calibration from 1 − 5µm for the CRIRES+
+high-resolution spectrograph at the VLT
+U. Seemann*,a , G. Anglada-Escud´ea , D. Baadeb , P. Bristowb , R. J. Dornb , R. Follertc , D.
+Gojakb , J. Grunhutb , A. P. Hatzesc , U. Heiterd , D. I. Ivesb , P. Jeepa , Y. Jungb , H.-U. K¨auflb ,
+F. Kerberb , B. Kleinb , J.-L. Lizonb , M. Lockhartd , T. L¨owingerc , T. Marquartd , E. Olivae , J.
+Paufiqu´eb , N. Piskunovd , E. Poznab , A. Reinersa , A. Smetteb , J. Smokerb , E. Stempelsd , E.
+Valentib
+a Georg-August
+
+Universit¨at G¨ottingen, Institut f¨
+ur Astrophysik, Friedrich-Hund-Platz 1,
+D-37077 G¨ottingen, Germany;
+b European Southern Observatory, Karl Schwarzschild Str. 2, D-85748 Garching, Germany;
+c Th¨
+uringer Landessternwarte Tautenburg, Sternwarte 5, D-07778 Tautenburg, Germany;
+d Uppsala Universitet, Department for Physics and Astronomy, Box 515, 751 20 Uppsala,
+Sweden;
+e INAF-Arcetri Observatory, Largo E. Fermi 5, I-50125 Firenze, Italy
+ABSTRACT
+CRIRES at the VLT is one of the few adaptive optics enabled instruments that offer a resolving power of 105
+from 1 − 5 µm. An instrument upgrade (CRIRES+) is proposed to implement cross-dispersion capabilities,
+spectro-polarimetry modes, a new detector mosaic, and a new gas absorption cell. CRIRES+ will boost the
+simultaneous wavelength coverage of the current instrument (∼ λ/70 in a single-order) by a factor of & 10
+in the cross-dispersed configuration, while still retaining a 10 arcsec slit suitable for long-slit spectroscopy.
+CRIRES+ dramatically enhances the instrument’s observing efficiency, and opens new scientific opportunities.
+These include high-precision radial-velocity studies on the 3 m/s level to characterize extra-solar planets and their
+athmospheres, which demand for specialized, highly accurate wavelength calibration techniques. In this paper,
+we present a newly developed absorption gas-cell to enable high-precision wavelength calibration for CRIRES+.
+We also discuss the strategies and developments to cover the full operational spectral range (1−5 µm), employing
+hollow-cathode emission lamps, Fabry-P´erot ´etalons, and absorption gas-cells.
+Keywords: astronomical instrumentation, infrared spectrographs, high spectral resolution, upgrade of existing
+VLT instruments, infrared spectrometers, wavelength calibration, radial-velocities, extra-solar planets
+
+1. INTRODUCTION
+The CRyogenic high-resolution InfraRed Echelle Spectrograph (CRIRES3 ) is installed on UT1 (Antu) of ESO’s
+Very Large Telescope (VLT), and is in operation since 2006. The spectrograph features a nominal resolving
+power of R = 105 (using a 0.2′′ slit) over the entire 1 − 5 µm near-infrared (NIR) wavelength domain. CRIRES
+is equipped with a MACAO4 adaptive optics module to enhance the energy concentration within the 0.2 × 30
+arcsec slit. A single order is dispersed on a focal plane mosaic of 4 1k x 1k InSb Aladdin detectors,5 resulting in
+a simultanous wavelength coverage of about λ/70 (at 1µm) to λ/50 (at 5µm).
+The CRIRES upgrade project aims to increase the observing efficiency of the instrument, transforming it
+into a cross-dispersed echelle spectrograph with new capabilities, termed “CRIRES+”. The major changes
+implemented by the upgrade comprise a cross-dispersion unit in place of the existing prism pre-disperser, a
+new focal plane array of 3 HAWAII-2RG 2k×2k IR detectors, introduction of a new spectro-polarimeter, and
+additional means of wavelength calibration to enable high-precision velocimetry using a gas-absorption cell. The
+Further author information:
+* e-mail: seemann@astro.physik.uni-goettingen.de
+
+Figure 1. Optical layout of the upgraded CRIRES, termed “CRIRES+”. The instrument itself is located in a cryostat (dark
+shaded area), interfaced by a dichroic entrance window. The upgraded optics1, 2 consist of cross-dispersion capabilities (via
+a grating wheel), camera, and a new 3-chip detector mosaic. The adaptive optics module, the instrument derotator, and
+calibration devices are comprised in a warm part between the telescope and the spectrograph (light grey area). Wavelength
+calibration sources are inserted into the optical beam just after the telescope. This is where the new absorption gas-cell
+is mounted (red cylinder), as well as feeds for emission line lamps, ´etalons, and a polarimeter.
+
+Figure 2. ThAr catalog8 (top) and corresponding histogram (bottom) of lines used for the standard CRIRES(+) wavelength
+calibration. The density of availabe lines rapidly decreases towards longer wavelengths, rendering ThAr unsuitable as a
+calibration source for the entire NIR range. ThAr lines greatly vary in intensity, so that effectively only a subset can be
+used.
+
+CRIRES+ project and its main components are further described elsewhere in these proceedings.1, 2, 6, 7 Figure 1
+shows an overview of the new optical layout of CRIRES+ and its main components.
+This paper focuses on the new absorption gas-cell for CRIRES+, and outlines the wavelength calibration strategy for CRIRES+ comprised of various reference sources. It is organized as follows: §2 describes the wavelength
+calibration in the NIR and the currently used techniques with CRIRES. In §3, we present a newly developed
+gas-cell for precision calibration with CRIRES+, and discuss its design, construction, and characterization. The
+concept for wavelength calibrators with CRIRES+ is described in §4. Concluding remarks are provided in §5.
+
+2. WAVELENGTH CALIBRATION IN THE NIR
+High-resolution spectroscopy demands for precise wavelength calibrators. The well established technique in the
+optical domain using commercially available hollow-cathode lamps (HCLs) such as ThAr provides unresolved
+emission lines even at the high spectral resolving power of 100 000 offered by CRIRES. ThAr as the default
+wavelength reference for optical spectrographs can provide a line position accuracy9 of 16 − 82 m/s and up to
+∼ 10 m/s with carefully selected lines10 in the 400 − 700 nm range for single lines. In a stable environment, ThAr
+is thus suitable for high-precision applications such as doppler measurements on the m/s scale using large echelle
+formats. Blended lines and large intensity differences between the metal lines and the lines originating from the
+fill gas can be handled by careful selection and masking during calibration, however, two major problems exist
+with HCLs. First, HCLs are intrinsically unstable as their individual line intensities vary from lamp to lamp, and
+are a function of age, pressure, and operating current. These effects degrade the stability as a reference source.
+Over their lifetime, the gas pressure inside a HCL decreases, resulting in wavelength changes of the gas lines.
+The metal lines change in intensities as cathode material is sputtered off, and the geometry of the cathode thus
+depends on lamp age. Accordingly, the illumination of the instrument by the HCL varies over time. Secondly,
+
+Figure 3. Absorption spectrum of the CRIRES N2 O gas-cell3 in the near-infrared K–L bands. N2 O offers a number of
+transition bands redwards of 2µm as a wavelength reference in selected, small wavelength regions.
+
+ThAr does not exhibit a homogenous density of spectral features in terms of wavelength. While the line density
+is high in the optical (λ < 1µm), atomic transitions become infrequent at longer wavelengths. In the NIR, the
+line density of ThAr decreases so that it is not suitable to provide a wavelength solution for CRIRES beyond
+∼ 2.5µm.11 Nevertheless, a ThAr HCL is a CRIRES general purpose wavelength reference from 0.95 − 2.5µm,
+and yields a level of ∼ 50 m/s precision for the line positions. Fig. 2 shows the ThAr emission lines for calibrating
+CRIRES+ spectra.
+As with all NIR spectrographs, wavelength solutions for CRIRES at longer wavelengths rely on sky emission
+lines, telluric absorption lines, and absorption lines by specialized gases enclosed in reference gas cells. While the
+hydroxyl night-time airglow (OH) is present over a wide wavelength region in the NIR12 and well characterized,13
+at R = 105 these features are mostly too weak and too infrequent to provide a generally reliable wavelength
+standard for CRIRES(+). Similarly, molecules present in earth’s athmosphere provide a multitude of absorption
+lines across the NIR, dominated by the strong absorber H2 O, among others, whose transition bands define the
+boundaries of the band passes. The presence and strength of telluric calibrators, however, are strongly sitedependent and prone to variations on different timescales from hours to years. Thus, a detailed understanding
+and modelling of the atmospheric conditions, based on simultaneously measured sounding data, is required, as
+eg. high-altitude winds induce significant uncertainties (≤ 25m/s) on the line positions.8 Telluric molecules such
+as CO2 can be used with CRIRES and have demonstrated radial velocity precisions of 5 − 10 m/s,14 but are
+restricted to narrow wavelength intervals.
+The benefits of the wavelength calibration technique using telluric features can be mimicked by exploiting
+ro-vibration lines from a selected molecular gas. Such a captive gas (or a mixture of several) is then kept
+under well controlled conditions (inside a gas-cell vessel), and this vessel is brought into the light entering the
+spectrograph at the time of observations (analogous to the iodine method15 in the optical domain). The effect
+of such a gas-cell is thus similar to the imprint of molecular features from the atmosphere, on the actual target
+spectrum itself, but for selected (non-telluric) species and without the influences of the perturbing dynamical
+processes in the atmosphere. By using a reference gas in the optical path shared with the light coming from the
+astronomical target, wavelength calibration exposures can be recorded simultanously (the gas-cell is illuminated
+by the target), or offline with a broadband calibration lamp. A detailed knowledge of the reference gas spectrum
+is generally required, and precise line positions be known from laboratory measurements if absolute calibration
+is desired. The gaseous absorption lines can then be used to track all instrumental instabilities and drifts that
+follow the gas-cell in the optical chain. CRIRES has offered two such absorption gas cells for simultanous and
+offline calibration. A CO cell to cover the CO bands around 2.1µm in the K-band, and a N2 O gas-cell (Fig. 3)
+with usable absorption features in selected ranges between 2.6 − 4.7µm.
+While the latter approach is a viable option in the L- and M-bands, the range covered by N2 O is very limited.
+In the K-band, N2 O transition bands are rather weak, while the prominent (and wider) bands in L and M are
+easily saturated (and thus do not facilitate determination of accurate line positions nor profiles).
+The lack of calibration sources in the NIR comparable to those in the visual regime poses a major challenge
+to the exploitation of these wavelength regions using high-resolution spectroscopy. One of the goals of the
+
+CRIRES+ project is to improve the current wavelength calibration situation. In an on-going effort, we seek
+to provide enhanced wavelength reference sources for CRIRES+, both for general purpose calibration (of the
+facility instrument modes) and for specialized applications (high-precision radial velocities in the NIR).
+
+3. THE CRIRES+ PRECISION RADIAL VELOCITY GAS-CELL
+The gas-cell wavelength calibration method is the only technique that provides a wavelength reference information
+and enables monitoring of instrumental effects such as drifts in the dispersion relation and changes in slit
+illumination simultaneously with the astronomical observation, both in time and co-located on the detector. This
+means that the wavelength solution is recorded at the very same time and under the instantanous conditions
+as the stellar light is recorded. Within the instrument, the exact same optical path is used for both the source
+of wavelength reference and the celestial object, so that the spectral features of both contributions end up on
+the same pixels in the focal plane. When modelled properly,15, 16 this approach allows for very high precision
+(relative) wavelength calibration and long-term repeatability as needed for radial velocimetry work on the m/s
+level.
+For HARPS-type spectrographs, a high degree of illumination stability can be achieved by appropriately
+feeding the instrument via optical fibers. As CRIRES is not a fiber-fed spectrograph, it is important to provide
+a stable slit-illumination (aided by the adaptive optics), or to monitor the instrumental profile variations during
+the observation, by the use of the gas-cell’s spectral lines.
+For high-precision wavelength calibration with CRIRES+, we have developed a new NIR absorption gas-cell
+primarily aimed at exoplanet precision Doppler experiments. The design considerations of the reference gas for
+CRIRES+ are summarized as follows. The filling gas must provide a set of dense, homogenous and sharp spectral
+lines over a wide wavelength range, as to provide a high density of information usable to construct the dispersion
+relation. At the same time, the radial velocity information content15, 17, 18 of the stellar spectrum under study
+must match the anticipated RV precision. This, in turn, is subject to a multitude of parameters, among them
+attainable SNR of the target observations, availability of spectral features, ie. spectral type, wavelength range
+and instrumental (spectral) resolution. One of the science drivers6 of CRIRES+ is the search of super-Earths
+around low-mass stars, using the RV technique. To accomplish a ∼ 3 m/s level of RV precision for M-stars with
+CRIRES+ in cross-dispersion, we identified a suitable reference gas that fulfills the requirements in the K-band.
+Our choice of filling gas for the CRIRES+ short-path gas-cell is a compound of three molecular species. The
+mixture is tailored to provide an optimum wavelength coverage in the H and K-bands, with an emphasis on a core
+region in the K-band. The transmission spectrum is generated by acethylene (C2 H2 ), ammonia (NH3 ), and an
+isotopologue of methane (13 CH4 ), and draws from the experience of a previous NH3 gas-cell for CRIRES,16 and
+experiments with methane isotopologues on IRTF/CSHELL.19 Methane-13 (13 CH4 ) features the carbon atom
+with an additional neutron compared to naturally abundant methane (12 CH4 ). The latter is a major contributor
+to the telluric transmission spectrum, and could thus not be disentangled from a captive methane-12 held under
+controlled conditions (ie. in the gas-cell). However, methane-13 has a different reduced mass due to the heavier
+nucleus, responsible for shifting its rotational transitions significantly. Methane-13 is a stable isotopologue and is
+easily distinguished from standard methane-12. An important point is also that methane has well characterized
+absorption features with high frequency precision.20, 21 The partial pressures of the three molecular species are
+listed in Table 1. We have optimized these for the CRIRES+ configuration (R = 105 , ≥ 200 nm continous
+wavelength coverage in the K-band, available path-length) to allow for the best “aspect ratio”, ie. the optimum
+line-depth (∼ 80%) while retaining the smallest possible line-width (unresolved at R = 105 ).
+
+3.1 Design and construction
+The gas-cell is designed to utilize the maximum available clearance in front of the CRIRES+ instrument cryostat.
+This renders the length of the cell vessel to be no longer than ≈ 18 cm (constrained by the telescope flange and
+the instrument derotator), and hence also defines the optical path-length through the reference gas. The gas-cell
+module is composed of a mounting structure and the actual gas-cell, with the latter being an all-glass cylinder
+filled with the captive gas mixture. The primary design driver for the cell vessel are a) a longterm, gas-tight
+sealing (10 years), and b) a high optical efficiency. Experiments have shown that standard viton seals and
+glued windows cannot provide the long-term stability, and were therefore discarded. Instead, we chose the same
+
+Figure 4. Filled gas-cell cylinder with fritted quartz windows, containing a mixture of 13 CH4 , NH3 , C2 H2 . The “glas nose”
+on the top middle of the cell is a remainder of the filling stem used to insert the gases.
+
+material (quartz) for both the cylinder and windows, which allows for fritting them together with a glass mold to
+form a seamless, homogenous joint. The optically polished low-OH quartz glass windows are anti-reflection coated
+for the K-band, and mutually tilted with respect to each other so that internal fringing effects are minimized.
+Filling the cell with the appropriate partial gas pressures is done after evacuating the cylinder to below 10−3 mbar
+using a glass stem attached to the cylinder body. The mixture of gases is then achieved by subsequently flooding
+the cell with the individual species, at the desired partial pressures. Figure 4 shows the sealed and filled gas-cell
+cylinder.
+Our tests over a period of four months have proven that the cell is well sealed, and no change in gas pressure
+could be detected. Four glas-air interfaces by the two windows inevitably result in a reduced throughput of
+the instrument. We measured the total transmission of the complete cell to be above 90% in the K-band, and
+around 85% in the Y–H bands (on average, including windows and gas filling). This only marginally reduces the
+efficiency of CRIRES+.
+
+3.2 Gas-cell mount
+CRIRES(+) features a calibration slide close to the VLT Nasmyth focal plane, before the light enters the derotator
+and the adaptive optics module. This movable stage holds two slots for gas-cells with short optical path-length
+that can be inserted directly into the optical beam. The spectral features of the reference gas is thus imprinted
+onto the stellar light immediately after leaving the telescope. To host the sealed glas vessel in a defined and
+reproducible location and orientation with respect to the telescope beam, we have designed a specialized mount
+for the gas-cell (see Figure 5). The glass corpus is fixed in two rings, where four rubber padded screws each
+Table 1. Molecular species and their partial pressures for the CRIRES+ precision radial velocity gas-cell. The total
+pressure of the filled cell is ∼ 300 mbar, with a path-length of 18 cm. The fourth column denotes the average line-width
+of the corresponding species, as measured from high-resolution spectra. In the last column, t gives the percentage of
+wavelength coverage with usable absorption features deeper than 10% from the gas mixture, for each of the JHK band
+range definitions.
+
+Molecule
+Acethylene
+Ammonia
+Methane
+
+12
+
+C2 H2
+NH3
+13
+CH4
+
+14
+
+Pressure
+[mbar]
+∼ 60
+∼ 90
+∼ 150
+
+line-width
+[km/s]
+1.791 ± 0.010
+1.978 ± 0.011
+1.797 ± 0.022
+
+t
+[%]
+K: ∼ 76%
+H: ∼ 67%
+J: < 10%
+
+Figure 5. Design of the CRIRES+ short gas-cell mount. The fragile glass cylinder is held in a stress-free configuration.
+Side view (left) and cut front view (right). Parts are labelled as follows: protective aluminum shells (1-2), gas-cell cylinder
+(3), mounting posts and ring fixtures (4, 8), straylight removal masks (5-6), dust protection caps (7), stress-free alignment
+(9-11), and locking mechanism (12-14).
+
+hold and align the cylinder almost free of stress. This proved especially important during shipping and handling
+to prevent cracks or breakage of the glass and seals, and ensures long-term endurance under changing ambient
+conditions. Two aluminum half-shells further protect the cell mechanically and provide shielding from external
+straylight.
+
+3.3 Laboratory FTS measurements
+A prototype gas-cell has been successfully built and filled. We have started to characterize its transmission
+spectrum by means of a Fourier transform spectrometer (FTS). Spectra of the gas-cell were recorded with
+a Bruker IFS125HR device at a resolution between 0.04 − 0.0065 cm−1 (corresponding to resolving powers of
+250 000 − 1 538 000 at 1 µm). The cell is measured at an ambient pressure < 0.1 mbar to supress the athmospheric
+contributions by water vapor etc. within the instrument. A blackbody-like continuum lamp is used to illuminate
+the gas-cell. Normalized spectra of the H and K-bands are on display in Figures 6 and 7, respectively.
+In the H-band (1.47 − 1.83µm), the strongest absorption features in the cell’s spectrum (Figure 6, bottom
+panel) originate from acethylene in two very deep (∼ 90%) bands around 1.53µm. Similarly prominent contributions in the neighbouring range (1.5µm) are a set of ammonia lines, partly mixed with acethylene. The largest
+wavelength range in this band, starting at 1.63µm, is covered by deep (≤ 80%) line systems from methane-13,
+with minor contributions by ammonia. Overall, the line coverage of the three gases in the H-band is quite
+complete, with only a small gap around 1.6µm. The upper panels in Figure 6 show FTS spectra of the individual
+gases ammonia, acethylene, and methane-13. These are measured separately under different ambient conditions,
+and include some water vapor contributions from a normal athmosphere during the experiment (in the case
+of NH3 and C2 H2 ). Note that the individual species have lower gas pressures than present in the prototype
+gas-cell (Table 1). For guidance, the top panel in Figure 6 gives the telluric spectrum of the same FTS setup as
+measured with the gas-cell, and represents the ambient air from the optical path between source and detector.
+Note that this telluric spectrum is much weaker and cleaner than a corresponding spectrum measured through
+Earth’s athmosphere with the VLT, due to the much smaller path-length. The shaded areas in Figure 6 denote
+wavelength ranges outside the H-band definitions.
+Our FTS measurements of the K-band (1.95 − 2.4µm) are plotted in Figure 7. This is the wavelength range
+for which the gas pressures of ammonia and methane-13 are designed to provide the optimum line depths.
+Acethylene (third panel from top) has only very weak bands in this range and does not add significantly to
+
+Figure 6. Laboratory FTS measurements of the CRIRES+ gas-cell species in the H-band. Plotted from top to bottom are
+the ambient athmosphere (mostly contributions by wator-vapor, as present during the gas-cell measurement), ammonia
+and acethylene gas (both including residual water vapor in the setup), methane-13, and the compound gas-cell mixture
+as measured from the filled CRIRES+ cell.
+
+Figure 7. K-band measurements of the filled CRIRES+ gas-cell and its individual species. See Figure 6.
+
+Figure 8. K-band regions with transition bands by ammonia (top, blue), acethylene (middle, pink), and methane-13
+(bottom, green) as measured with the filled CRIRES+ cell. Also shown in detail are single line profiles of the corresponding
+molecule (right panels). In all three regions, some smaller lines from the other two molecules may be present, respectively,
+as the wavelength regions of their absorption features partly overlap. The line profiles are mostly resolved at the resolution
+of these FTS measurements (R = 1 538 000), yet for CRIRES+ (R = 100 000) will qualify as largely unresolved.
+
+the spectrum of the mixture (bottom panel). The major constituent in the K-band is methane-13, achieving
+large line-depths of more than 95% in the high-resolution FTS spectra. The central part of the band is further
+populated by strong ammonia lines, which also has features at around 2.0µm and below. In the K-band, the
+coverage with reference gas lines is complete but for a ∼ 30nm range at 2.1µm. In total, more than 75% of the
+entire K-band are populated with suitable gas lines deeper than 10% by any of the three reference gas species.
+The prototype CRIRES+ gas-cell demonstrates the power of the selected gas mixture in the H and K-bands.
+For the remaining operating wavelength domains of CRIRES+, other wavelength reference sources are foreseen
+(Section 4).
+To achieve the demanding RV precision of CRIRES+ in the K-band, the spectral lines exploited for wavelength
+calibration must enable a highly accurate measurement of their line positions. This immediately translates into
+sharp, unresolved reference lines at the given resolving power (R = 105 ) of CRIRES+. Our gas-cell mixture is
+designed such that the line-widths of all three molecules is smaller than 3 km/s, corresponding to the resolution
+element of CRIRES+. We measured the line-widths in the FTS spectra with the highest attainable resolution
+for all three gases in selected, strong absorption bands. At ∆λ = 0.0065 cm−1 (R = 1 538 000) these lines are well
+discernible for 13 CH4 , NH3 , and C2 H2 (though numerous are blended, particularly in 13 CH4 ). Line-widths are
+typically closely distributed around 2 km/s (cf. Table 1), with very similar average widths of 1.797±0.022 km s−1 ,
+1.978 ± 0.011 km s−1 , and 1.791 ± 0.010 km s−1 (for 13 CH4 , NH3 , and C2 H2 , respectively). Figure 8 shows these
+transmission features in narrow regions of the K-band separately for all three constituents, and also illustrates
+corresponding typical line profiles.
+
+4. WAVELENGTH CALIBRATION STRATEGY FOR CRIRES+
+CRIRES+ will be a facility instrument at the VLT, addressing a large variety of scientific questions. Appropriate
+wavelength calibration sources must be provided for the entire working range of the spectrograph (0.95 − 5.3µm).
+Moreover, wavelength calibration needs to support all observing modes of CRIRES+. In combination with
+the limited wavelength coverage of the individual sources, this leads to a number of constraints the CRIRES+
+calibration plan must match:
+1. The existing HCL techniques as well as the gas-cells (including the new CRIRES+ cell) cannot operate in
+polarimetry mode. This is a result of the opto-mechanical layout, where all calibration devices are located
+on a movable stage in front of the Nasmyth focus. At the same time, the polarimeter unit7 is also located
+on the same stage, and thus cannot be inserted at the same time as the gas-cells or the HCL fiber-feeds.
+2. The ThAr HCL is only suitable for the Y–K bands (see Section 2).
+3. The available and new gas-cells lack broadband coverage in, or do not operate in the Y–J and L–M bands.
+4. The available techniques in the L–M bands are not satisfactory (Section 2).
+We address these issues by expanding the suite of calibration sources for CRIRES+. The concept for calibrators
+comprises the following changes and additions. First, the ThAr HCL will be superseded by an UNe HCL.
+The characteristics of UNe have recently been studied, and prove to be very comparable to ThAr. A major
+advantage of UNe is that it provides significantly more lines (three to five times) in the NIR, and thus increases
+the suitability of the HCL method for CRIRES+ in the J, H, and K-bands. UNe catalogs22–24 are now available
+with line lists covering the Y–L bands. These HCLs are readily available and their line density is suitable for
+CRIRES+ as a general purpose calibrator up to (including) the K-band, where the transmission of commercially
+availabe UNe bulbs, due to the quartz window, in combination with standard optical fibers breaks down. The
+implementation of the UNe HCL in CRIRES+ (aided by the cross-dispersed spectral format) will significantly
+improve the dispersion solution.
+Secondly, to enable wavelength calibration for polarimetric observations, an additional reference source with
+high stability coverage is considered. Etalons provide a homogenously spaced set of lines, where the line sharpness
+(“finesse”) and contrast can be controlled by the quality and reflectivity of the reflective coating. At the same
+time, the peak-to-peak distance (free spectral range) is a function of the cavity length. This allows to tune the
+free spectral range to the resolution of the instrument. For CRIRES+, we are developing stabilized Fabry-P´erot
+´etalons to provide suitable offline calibration lines over the entire NIR range. Two etalon units are studied, where
+their usable wavelength range is driven by the availability of suitable broadband cavity coatings. Although a small
+finesse (∼ 10) satisfies a level of 5 m/s calibration precision, a broadband performance over several NIR bands (eg.
+YJ and HK) is not easily achieved. Furthermore, challenges include achieving the necessary long-term stability
+of such a unit. The stability is directly linked to the temperature stability of the etalon, and thus demands for
+an actively controlled environment inside a vacuum tank. For CRIRES+, fiber-fed ´etalons are under study. This
+poses stringent requirements on the etalon illumination and its stability by the optical fibers. A quasi-continuum
+laser-driven light source (LDLS) is used to provide the necessary white-light to the etalon. These FP ´etalons are
+compatible with the CRIRES+ polarimetric modes when the calibration light is fed into the optical path before
+the movable stage, where the polarimeter is mounted on. This can be accomplished by exploiting the existing
+calibration unit outside of the telescope beam. The output light of that unit is redirected into the beam by a
+folding mirror, before the movable stage. To obtain an absolute wavelength solution with the etalon, the UNe
+HCL will be employed as a reference. This is because the line-position of the etalon peaks is not known a priori
+(albeit their relative positions are), but can be assigned by comparison with a HCL line. The development of
+an etalon for CRIRES+ will significantly enhance its dispersion solution across the entire spectral format, by
+providing homogenously and densely distributed reference lines. With a dedicated and optimized etalon unit,
+this technique may also overcome the lack of calibrators in the L and M-bands.
+In a third approach, we are also seeking to further advance the gas-cell design and to expand the spectral
+coverage beyond the H and K-bands. Absorption gas-cells with an increased optical path-length to several meters
+are under study. Such a cell could be operated with filling gases at much lower pressures, yielding significantly
+
+reduced line-widths for gasous species that at short path-lengths a) provide unsuitably broad spectral lines, or
+b) have too weak absorption features due to small absorption coefficients.
+The CRIRES+ suite of wavelength reference sources also comprises the existing N2 O gas-cell for use in
+selected L&M wavelength ranges. Also supported are the established methods of using sky lines and telluric
+lines to construct the dispersion solution in wavelength domains where applicable (cf. Section 2).
+
+5. CONCLUSION
+The CRIRES+ project will upgrade VLT/CRIRES into a cross-dispersed, high-efficiency NIR spectrograph at a
+resolving power of 105 . New capabilities such as high-precision radial velocity measurements on low-mass stars
+and polarimetric observations call for new and improved wavelength calibration techniques across the operating
+domain from 1 − 5µm.
+To satisfy the corresponding requirements, we have developed a new CRIRES+ absorption gas-cell specifically
+tailored to enable RV experiments with M-stars on the 3 m/s level in the K-band. We have designed, built, and
+characterized a prototype gas-cell for CRIRES+ filled with a compound of ammonia, acethylene, and methane13 molecular species. This cell provides a forest of absorption lines in the H and K-bands for simultaneous
+wavelength calibration, evidenced in high-resolution FTS spectra. Our data show that the population of lines
+covers a high fraction of the bandpasses, and that the gas line-widths are smaller than can be resolved with
+CRIRES+, thus providing high-precision wavelength markers.
+We have also outlined the wavelength calibration strategy and our developments to expand the suite of
+frequency calibration sources for CRIRES+. This includes an improved UNe-HCL over ThAr, the new gas-cell
+for precision applications, and the design of Fabry-P´erot ´etalons to cover the Y–M bands. The set of advanced
+wavelength calibrators will enable CRIRES+ to explore the NIR regime in unprecedented detail.
+
+ACKNOWLEDGMENTS
+The CRIRES+ consortium acknowledges funding from the German federal ministry of education and research
+(BMBF) and the Wallenberg foundation, Sweden.
+
+REFERENCES
+[1] Oliva, Ernesto et al., “Concept and optical design of the cross-disperser module for CRIRES+,” Proceedings
+of the SPIE, 9147-289 (2014).
+[2] Lizon, Jean-Louis et al., “Opto-mechanical design of a new cross dispersion unit for the CRIRES+ high
+resolution spectrograph for the VLT,” Proceedings of the SPIE, 9147-290 (2014).
+[3] K¨aufl, H.-U., Ballester, P., Biereichel, P., Delabre, B., Donaldson, R., Dorn, R., Fedrigo, E., Finger, G.,
+Fischer, G., Franza, F., Gojak, D., Huster, G., Jung, Y., Lizon, J.-L., Mehrgan, L., Meyer, M., Moorwood,
+A., Pirard, J.-F., Paufique, J., Pozna, E., Siebenmorgen, R., Silber, A., Stegmeier, J., and Wegerer, S.,
+“CRIRES: a high-resolution infrared spectrograph for ESO’s VLT,” in [Society of Photo-Optical Instrumentation Engineers (SPIE) Conference Series], Moorwood, A. F. M. and Iye, M., eds., Society of Photo-Optical
+Instrumentation Engineers (SPIE) Conference Series 5492, 1218–1227 (Sept. 2004).
+[4] Paufique, J., Biereichel, P., Donaldson, R., Delabre, B., Fedrigo, E., Franza, F., Gigan, P., Gojak, D.,
+Hubin, N. N., Kasper, M. E., Kaeufl, H.-U., Lizon, J.-L., Oberti, S., Pirard, J.-F., Pozna, E., Santos, J.,
+and Stroebele, S., “MACAO-CRIRES: a step toward high-resolution spectroscopy,” in [Advancements in
+Adaptive Optics], Bonaccini Calia, D., Ellerbroek, B. L., and Ragazzoni, R., eds., Society of Photo-Optical
+Instrumentation Engineers (SPIE) Conference Series 5490, 216–227 (Oct. 2004).
+[5] Dorn, R. J., Finger, G., Huster, G., Kaeufl, H.-U., Lizon, J.-L., Mehrgan, L., Meyer, M., Pirard, J.-F.,
+Silber, A., Stegmeier, J., and Moorwood, A. F. M., “The CRIRES InSb megapixel focal plane array detector
+mosaic,” in [Society of Photo-Optical Instrumentation Engineers (SPIE) Conference Series], Garnett, J. D.
+and Beletic, J. W., eds., Society of Photo-Optical Instrumentation Engineers (SPIE) Conference Series
+5499, 510–517 (Sept. 2004).
+
+[6] Follert, Roman et al., “CRIRES+: a cross-dispersed high resolution infrared spectrograph for the ESO
+VLT,” Proceedings of the SPIE, 9147-44 (2014).
+[7] Lockhart, Matthew et al., “Novel infrared polarimeter for the ESO CRIRES+ instrument,” Proceedings of
+the SPIE, 9147-329 (2014).
+[8] Kerber, F., Nave, G., Sansonetti, C. J., and Bristow, P., “From laboratory to the sky: Th-Ar wavelength
+standards for the cryogenic infrared echelle spectrograph (CRIRES),” Physica Scripta Volume T 134, 014007
+(May 2009).
+[9] Palmer, B. A. and Engleman, R., [Atlas of the Thorium spectrum] (1983).
+[10] Lovis, C. and Pepe, F., “A new list of thorium and argon spectral lines in the visible,” A&A 468, 1115–1121
+(June 2007).
+[11] Kerber, F., Nave, G., and Sansonetti, C. J., “The Spectrum of Th-Ar Hollow Cathode Lamps in the 691-5804
+nm region: Establishing Wavelength Standards for the Calibration of Infrared Spectrographs,” ApJS 178,
+374–381 (Oct. 2008).
+[12] Rousselot, P., Lidman, C., Cuby, J.-G., Moreels, G., and Monnet, G., “Night-sky spectral atlas of OH
+emission lines in the near-infrared,” A&A 354, 1134–1150 (Feb. 2000).
+[13] Abrams, M. C., Davis, S. P., Rao, M. L. P., Engleman, Jr., R., and Brault, J. W., “High-resolution Fourier
+transform spectroscopy of the Meinel system of OH,” ApJS 93, 351–395 (July 1994).
+[14] Figueira, P., Pepe, F., Melo, C. H. F., Santos, N. C., Lovis, C., Mayor, M., Queloz, D., Smette, A., and
+Udry, S., “Radial velocities with CRIRES. Pushing precision down to 5-10 m/s,” A&A 511, A55 (Feb.
+2010).
+[15] Butler, R. P., Marcy, G. W., Williams, E., McCarthy, C., Dosanjh, P., and Vogt, S. S., “Attaining Doppler
+Precision of 3 M s-1,” PASP 108, 500 (June 1996).
+[16] Bean, J. L., Seifahrt, A., Hartman, H., Nilsson, H., Wiedemann, G., Reiners, A., Dreizler, S., and Henry,
+T. J., “The CRIRES Search for Planets Around the Lowest-mass Stars. I. High-precision Near-infrared
+Radial Velocities with an Ammonia Gas Cell,” ApJ 713, 410–422 (Apr. 2010).
+[17] Bouchy, F., Pepe, F., and Queloz, D., “Fundamental photon noise limit to radial velocity measurements,”
+A&A 374, 733–739 (Aug. 2001).
+[18] Reiners, A., Bean, J. L., Huber, K. F., Dreizler, S., Seifahrt, A., and Czesla, S., “Detecting Planets Around
+Very Low Mass Stars with the Radial Velocity Method,” ApJ 710, 432–443 (Feb. 2010).
+[19] Anglada-Escud´e, G., Plavchan, P., Mills, S., Gao, P., Garc´ıa-Berr´ıos, E., Lewis, N. S., Sung, K., Ciardi, D.,
+Beichman, C., Brinkworth, C., Johnson, J., Davison, C., White, R., and Prato, L., “Design and Construction
+of Absorption Cells for Precision Radial Velocities in the K Band Using Methane Isotopologues,” PASP 124,
+586–597 (June 2012).
+[20] Nai-Cheng, S., Yao-Xiang, W., Yi-Min, S., Cheng-Yang, L., Xue-Bin, Z., and Chu, W., “Iodine and Methane
+Stabilized He-Ne Lasers as Wavelength Standards,” in [Precision Measurement and Fundamental Constants],
+Taylor, B. N. and Phillips, W. D., eds., 77 (Aug. 1981).
+[21] Boudon, V., Champion, J.-P., Gabard, T., Lo¨ete, M., Coustenis, A., de Bergh, C., B´ezard, B., Lellouch,
+E., Drossart, P., Hirtzig, M., Negr˜ao, A., and Griffith, C. A., “Methane in Titan’s atmosphere: from
+fundamental spectroscopy to planetology,” Europhysics News 40, 17–20 (July 2009).
+[22] Redman, S. L., Lawler, J. E., Nave, G., Ramsey, L. W., and Mahadevan, S., “The Infrared Spectrum of
+Uranium Hollow Cathode Lamps from 850 nm to 4000 nm: Wavenumbers and Line Identifications from
+Fourier Transform Spectra,” ApJS 195, 24 (Aug. 2011).
+[23] Redman, S. L., Ycas, G. G., Terrien, R., Mahadevan, S., Ramsey, L. W., Bender, C. F., Osterman, S. N.,
+Diddams, S. A., Quinlan, F., Lawler, J. E., and Nave, G., “A High-resolution Atlas of Uranium-Neon in the
+H Band,” ApJS 199, 2 (Mar. 2012).
+[24] Sarmiento, Luis-Fernando, Reiners, Ansgar, Seemann, Ulf et al., “Characterizing UNe hollow cathode lamps
+at NIR wavelengths for the CARMENES survey,” Proceedings of the SPIE, 9147-194 (2014).
+
+

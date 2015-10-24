@@ -1,0 +1,12 @@
+pdftotxt   - poppler-utils   - installed
+
+pdftotext -layout input.pdf output.txt
+
+ebook-convert    from calibre
+
+
+pdfreflow then html _> text
+pdftohtml >> pdfreflow >> htmltotext
+
+
+pdfBox - installed
