@@ -1,5 +1,7 @@
 Usage: ebook-convert input_file output_file [options]
-
+56.3nm
+1.2
+a.b
 Convert an ebook from one format to another.
 
 input_file is the input and output_file is the output. Both must be specified as the first two arguments to the command.

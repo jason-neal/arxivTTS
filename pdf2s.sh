@@ -12,5 +12,5 @@ ebook-convert $filename > tmptext.txt
 
 # add text file editing command here
 
-festival --tts tmptext.txt
-
+#festival --tts tmptext.txt
+text2wave tmptext.txt -o testwave.mp3
