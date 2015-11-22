@@ -1,18 +1,21 @@
+#!/usr/local/bin/python3
+#-*- coding: utf-8 -*-
 
 ## Article filter for turning pdf journal articles into speach or wave files.
 
 ## Filter a textfile to remove anomalies that don't need to be spoken
 
 import subprocess
+import re
 
 def manage_filenames(pdffilename):
     filestruct = pdffilename.slit('/')
     if len(filestruct) is 1:
-        path = ""
+        pdfpath = ""
         pdfname = filestruct
-    else 
+    else:
         pdfname = filestruct.pop()
-        path = filestruct.join("/")
+        pdfpath = filestruct.join("/")
     return pdfpath, pdfname
 
 def extract_text(filename):
@@ -44,26 +47,66 @@ def create_audio(filename, ext='.mp3'):
 
 def text_filter(filename):
     # load 
-    # filter
+    with open(filename) as f:
+        textdata = f.read()
+    print("printing Text data after loading in")
+    print(repr(textdata))  # print with representation of whitespace
+    #print "%r" % textdata 
+    filtering(textdata)
     # save
     filteredfile = filename.split("/").pop()
-    filderedfile = "filtered_txt/filtered_" + filteredfile
+    filteredfile = "filtered_txt/filtered_" + filteredfile
     return filteredfile
     
-def main():
-    inputname ="/Test_articles/aa1.pdf"
-    path, filename = manage_filenames(inputname)
+def main(fname):
+    path, filename = manage_filenames(fname)
     extracted_file = extract_text(filename)
     filtered_file = textfilter(extactedfile)
     path2wavefile = create_audio(filtered_file)
-    
-def filtering():
-    # starting with simple test
-    formatterdict = {"_":" ",">":" ","<":" ",":":" ","-":" ", "_":" ", "@":" at ", 
-                     "\n\n":"\n", "(":" ", ")":" ", "[":" ","]":" ", "/2":" ", "":""}
-    unit_replace = {"nm ": " nanometer "," nm ": " nanometer ", " m ":" meters ", 
-                    "mjup":"jupeter mass", " A ": " Angstroms "} # Angstroms needs fixing
+    #Testing_filtering of smaller file.
 
+
+def filtering(textdata):
+    pass
+
+def merge_dicts(*dict_args):
+    '''
+    Given any number of dics, shallow copy and merge into a new dict, 
+    precedence goes to key value pairs in latter dicts.
+    (From python 3.5 can just use z = {**x, **y})
+    '''
+    result = {}
+    for dictionary in dict_args:
+        result.update(dictionary)
+    return result
+
+def filtertest():
+    fname ="Test_articles/art_section.txt"
+    print(fname)
+    #text_filter(inputname)
+    with open(fname, 'r') as f:
+        textdata = f.read()
+    print("printing Text data after loading in")
+    #print(repr(textdata))
+    # starting with simple test
+    formatterdict = {"_":" ",":":" ","-":" ", "_":" ", 
+                     "\n\n":"\n",  "/2":" "}
+    word_replace = { 
+                    "mjup":"jupiter mass", " A ": " Angstroms ",
+                    "exoplanet":"exo-planet","S/N":"Signal to noise", "Fig.":"Figure", "Eq.":"Equation", "Eqs.":"Equations"} # Angstroms needs fixing
+    distance = {" nm ": " nanometer ", " cm ":" centimeters ", " m ":" meters "}
+    
+    # au , r jup , r earht, r sun
+    velocity = {"km/s ":"kilometers per second ", "cm/s ":"centimeters per second","m/s ":"meters per second "}
+    acceleration = {}
+    #mass  kg, g, mjup, msun 
+    units_dict = merge_dicts(acceleration, velocity, distance)
+    
+    symbols_dict = {"@":" at ", "&":"and"}
+    brackets = {">":" ","<":" ", "(":" ", ")":" ","[":" ","]":" "}
+    #regular expression dicts
+    reg_words = {}
+    reg_char = {}
     #http://stackoverflow.com/questions/5658369/how-to-input-a-regex-in-string-replace-in-python
     regexp = {"\d+.\d+" :" point "}
     #formatterdict["_"] = " "
@@ -71,45 +114,70 @@ def filtering():
     #formatterdict["\n"] = " "
     print("Filters used")
     print(formatterdict)
-    print(unit_replace)
+    print(word_replace)
     print(regexp)
-    print("Testing fit output with tmptext.txt")
+   
+    
 
-    whole_text = ""
-    with open("tmptext.txt","r") as f:
-        for line in f:
-        	line = line.lower()
-        	for key, value in formatterdict.iteritems():
-        		line = line.replace(key, value)
-        	for key, value in unit_replace.iteritems():
-        		line = line.replace(key, value)	
-        	for key, value in regexp.iteritems():
-        		line = line.replace(key, value)	
-        	print(line)
-            whole_text = whole_text + line + "\n" 
+    simple_filter_dict = merge_dicts(units_dict, symbols_dict) 
+   # for key, value in formatterdict.iteritems():
+    #             textdata = textdata.replace(key, value)
+    for key, value in simple_filter_dict.iteritems():
+                textdata = textdata.replace(key, value)    
+    #for key, value in regexp.iteritems():
+    #            textdata = textdata.replace(key, value)    
+    print("Filtered text")
+    print(textdata)
+    # save to file
+    
+    fout = fname
+    fout = fout.replace('.txt','_filtered.txt')
+   
+    with open(fout, "w") as fo:
+        fo.write(textdata)
+    print('saved to "filtered_' + fout + '"')
 
-    print("file", f)
-    print("whole_text", whole_text)
-    # save output file
-    with open("filtered_text.txt","w") as f:
-    	f.write("Filtered text output \n")
-    	f.write(whole_text)
+    print('Testing regualar expresstionS')
+    
+    
+    
+    
+    # whole_text = ""
+    # with open("tmptext.txt","r") as f:
+    #     for line in f:
+    #         line = line.lower()
+    #         for key, value in formatterdict.iteritems():
+    #             line = line.replace(key, value)
+    #         for key, value in unit_replace.iteritems():
+    #             line = line.replace(key, value)    
+    #         for key, value in regexp.iteritems():
+    #             line = line.replace(key, value)    
+    #         print(line)
+    #         whole_text = whole_text + line + "\n" 
+
+    # print("file", f)
+    # print("whole_text", whole_text)
+    # # save output file
+    # with open("filtered_text.txt","w") as f:
+    #     f.write("Filtered text output \n")
+    #     f.write(whole_text)
 
 
 
-    # test 2
-    f = open("tmptext.txt","r")
-    alltext = f.read()
-    print("All the text using f.read() \n ", alltext)
-    for key, value in formatterdict.iteritems():
-        alltext = alltext.replace(key, value)
-    for key, value in unit_replace.iteritems():
-        alltext = alltext.replace(key, value)	
-    for key, value in regexp.iteritems():
-        alltext = alltext.replace(key, value)	
-    print("filtered alltext", alltext)
+    # # test 2
+    # f = open("tmptext.txt","r")
+    # alltext = f.read()
+    # print("All the text using f.read() \n ", alltext)
+    # for key, value in formatterdict.iteritems():
+    #     alltext = alltext.replace(key, value)
+    # for key, value in unit_replace.iteritems():
+    #     alltext = alltext.replace(key, value)    
+    # for key, value in regexp.iteritems():
+    #     alltext = alltext.replace(key, value)    
+    # print("filtered alltext", alltext)
 
 
 
-if __name__ is "__main__"
-    main()
+if __name__ == "__main__":
+    # main(fname)
+    filtertest()
