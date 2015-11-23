@@ -1,0 +1,47 @@
+Astronomy & Astrophysics 
+April 22, 2015
+
+c
+ESO
+2015
+
+arXiv:1504.05223v1 [astro-ph.IM] 20 Apr 2015
+
+Key words. Infrared: planetary systems - planets and satellites: atmospheres - Methods: data analysis - techniques: spectroscopic
+
+Molecules responsible for the observed absorption features typically can not be identified directly due to low resolution. .
+
+The small host star (an M dwarf with Rstar = 0.21R⊙)
+
+A simulated spectrum (S˜ n )
+R2p
+S˜ n (λ, t) = F(λ, v s) − i p (λ, φ, v s) 2 − ia (λ, φ, v s)P(λ, v s+p) · T (λ, t)
+R⋆
+(1)
+i p (λ, φ, v s) =
+
+Z
+
+I(λ, µ, v s )dµ
+
+(I, characterized by the normalized limb
+distance, µ,) 
++- (A p )
+
+E. Aronson et al.: Using near infra-red spectroscopy for characterization of transiting exoplanets
+
+Wavelength (µm)
+instrumental profile (Γ), which is approximated b
+continuum normalized (η):
+N
+
+
+S n (λ, t) = S˜ n (λ, t)
+Γ · (1 − N(λ, φ)) · η.
+ calculating the
+residuals (r in Eq. 5) between observations multiplied with ν and
+continuum normalized synthetic observations in a given phase.
+
+
+Stellar radius (R ⊙ )
+ 
