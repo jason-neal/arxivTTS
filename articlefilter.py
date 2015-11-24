@@ -94,10 +94,11 @@ def filtertest():
                      "\n\n":"\n",  "/2":" "}
     word_replace = {"mjup":"jupiter mass", " A ": " Angstroms ",
                     "exoplanet":"exo-planet","S/N":"Signal to noise", "Fig.":"Figure", "Eq.":"Equation", "Eqs.":"Equations"} # Angstroms needs fixing
-    distance = {"µm":"micrometers"," nm ": " nanometer ", " cm ":" centimeters ", " m ":" meters "}
+    distance = {"µm":"micrometers","km":"kilometers"," nm ": " nanometer ", " cm ":" centimeters ", " m ":" meters "}
     
     # au , r jup , r earht, r sun
-    velocity = {"km/s ":"kilometers per second ", "cm/s ":"centimeters per second","m/s ":"meters per second "}
+    #velocity = {"km/s ":"kilometers per second ", "cm/s ":"centimeters per second","m/s ":"meters per second "}
+    velocity  = {"/s":"per second"}
     acceleration = {}
     #mass  kg, g, mjup, msun 
     units_dict = merge_dicts(acceleration, velocity, distance)
@@ -109,31 +110,20 @@ def filtertest():
     re_symbols = {'λ':'lambda','φ':'phi','⊙':' Sun','Γ':'Gamma','η':'eta','ν':'nu','µ ':'mu ','µ,':'mu,','=':'equals','˜':'tilda'}
     re_stupidthings ={'':'','':'','':'' } # May wish to use FF to remove extra titles
 
-
     #http://stackoverflow.com/questions/5658369/how-to-input-a-regex-in-string-replace-in-python
     regexp = {"\d+.\d+" :" point "}
-    #formatterdict["_"] = " "
-    #formatterdict["@"] = " at "
-    #formatterdict["\n"] = " "
-
-    #\xce\xbb   = lambda  λ
-    #\xce\x93    = Capital Gamma  Γ
-    #\xcf\x86   =  phi   φ
-    # η
-    #\xe2\x8a\x99 = sun symbol ⊙    
+   
     textdata2 = textdata
     
     simple_filter_dict = merge_dicts(word_replace, units_dict, symbols_dict, re_symbols,re_stupidthings) 
     print("Filters used")
     print(simple_filter_dict)
-    # for key, value in formatterdict.iteritems():
-    #             textdata = textdata.replace(key, value)
+
     for key, val in simple_filter_dict.iteritems():
-                textdata = textdata.replace(key, val) 
-    for key, val in simple_filter_dict.iteritems():
-                textdata2 = re.sub(key, val, textdata2)   
+                textdata = re.sub(key, val, textdata)   
     #for key, value in regexp.iteritems():
     #            textdata = textdata.replace(key, value)    
+    
     print("Filtered text")
     print(textdata)
     print(textdata2)
