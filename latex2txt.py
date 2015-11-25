@@ -2,6 +2,20 @@
 #-*- coding: utf-8 -*-
 import re
 
+
+
+def merge_dicts(*dict_args):
+    '''
+    Given any number of dics, shallow copy and merge into a new dict, 
+    precedence goes to key value pairs in latter dicts.
+    (From python 3.5 can just use z = {**x, **y})
+    '''
+    result = {}
+    for dictionary in dict_args:
+        result.update(dictionary)
+    return result
+
+
 def main():
     fname ="/home/jason/article2speech/trigger_solar_system_5R1.tex"
     print(fname)
@@ -85,13 +99,19 @@ def main():
 
     word_replace = {"Myr":"Mega years","mjup":"jupiter mass", " A ": " Angstroms ",
                     "exoplanet":"exo-planet","S/N":"Signal to noise", "Fig.":"Figure", "Eq.":"Equation", "Eqs.":"Equations"} # Angstroms needs fixing
-    distance = {" pc ":" parsec ", "µm":"micrometers","km":"kilometers"," nm ": " nanometer ", " cm ":" centimeters ", " m ":" meters "}
+    units = {r's\$\^{-2}\$':' per second squared',r's\$\^{-1}\$':' per second',"pc":" parsec", "µm":"micrometers","km":"kilometers"," nm ": " nanometer ", " cm ":" centimeters ", " m ":" meters "}
     
 
-    symbols = {r"\$\\sim\$":" around ", r"\\,M\$\_\\odot\$": " Solar mass ",r"R\$\_\\odot\$":" Solar radii ", "\$>\$":" over "}
+    symbols = {r"\$N\$":"N", r"\$\\sim\$":" around ", r"\M\$\_\\odot\$": " Solar mass ",r"R\$\_\\odot\$":" Solar radii ", "\$>\$":" over ", r"\\rm":""}
     #$^{60}$Fe   -> Iron 60
     elements = {r"\$\^\{60\}\$Fe":" Iron 60", r"\$\^\{26\}\$Al":"Aluminium 26"}
-    citations = {'\\citep[.*][.*]{.*}':' Changed citations',"\~\\ref{.*}":""}
+    # citations with ecta brackets [] are not yet removed
+    citations = {r"\\emph{.*}":"EMPHTERM",r'\\cite{.*}':'XXX', r'\\citet{.*}':' CITET', r'\\citep{.*}':' CITEP',r"\\ref{.*}":""}
+    spaces = {r"\\\,":" ", r'\~':' '}
+    # char--char  -> char-char
+    # number--number -> number to number
+    letters = {r"\\mu":"mu",r"\\nu":"nu",r"\\pi":"pi"}
+    merger = merge_dicts(units, word_replace,letters) 
     for key, val in elements.iteritems():
         data = re.sub(key, val, data)
 
@@ -101,14 +121,23 @@ def main():
     for key, val in citations.iteritems():
         data = re.sub(key, val, data)
 
+    for key, val in spaces.iteritems():
+        data = re.sub(key, val, data)
 
+    for key, val in merger.iteritems():
+        data = re.sub(key, val, data)
     ################### save output
     output = "latex2txt_test.txt"
    
     with open(output, "w") as fo:
         fo.write(data)
-    print('saved to ' + output )
+    print('Saved to ' + output )
 
+
+    #s = '234.4'
+    #s = 'test1.test2(test3);'
+    #s.replace(\^([^\.]))
+    #print(s)
 
 
 
