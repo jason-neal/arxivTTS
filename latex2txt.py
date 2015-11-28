@@ -17,7 +17,7 @@ def merge_dicts(*dict_args):
 
 
 def main():
-    fname ="/home/jason/article2speech/trigger_solar_system_5R1.tex"
+    fname ="Test_articles/trigger_solar_system_5R1.tex"
     print(fname)
     #text_filter(inputname)
     with open(fname, 'r') as f:
@@ -101,9 +101,6 @@ def main():
     misc = {r" ?Myr ?":" Mega years ", \
             r" ?SNR ?":" signal to noise ratio ",\
             r" ?S/N ?":" Signal to noise ", \
-            "Fig.":"Figure", \
-            "Eq.":"Equation", \
-            "Eqs.":"Equations", \
             } 
 
     units = {r"( |\\,)s\$?\^{-2}\$?":' per second squared', \
@@ -197,7 +194,7 @@ def main():
                     r"\\textbf{(.*)}":r" \g<1> ", \
                     r"\\textit{(.*)}":r" \g<1> ", \
                     r"\\emph{(.*)}":r" \g<1> ", \
-                    r"\\small ?":r""), \
+                    r"\\small ?":r"", \
                     }
     
     groups ={r"([A-Za-z]+)\-\-([A-Za-z]+)":r" \g<1>-\g<2>", \
@@ -213,49 +210,41 @@ def main():
             r"\$?10\^(\d+)\$?":r"10 to the power of \g<1> ", \
             }
             
-
-            # $v_{\infty}$
-    
-    #for key, val in groups.iteritems():
-    #    data = re.sub(key, val, data)
-
     merger = merge_dicts(units, BodyUnits, citations, set_space,
                         misc, trig, elements, letters, othersym, 
                         font_formats, groups) 
     
-    # Processing all dictionary elements
+    # Processing all dictionary regexs
     for key, val in merger.iteritems():
         data = re.sub(key, val, data)
 
-    # Reg expresions for last round things like $ signs
+    # Reg expresions for last round things like $ signs and exra white space
     tidy_up = {r"\$(.*?)\$":r" \g<1> ", \
-                r"  ":" " \
+                r" +":" " \
                 }
     # Cleaning up regexs
     for key, val in tidy_up.iteritems():
         data = re.sub(key, val, data)
-    # reg replacement with groups
-    
+   
+    # Junk to make still present issues stand out in txt file 
 	Reveal = {r"\\(.*?){":"#### REVEALING \g<1> REVEALING ####"}
     for key, val in Reveal.iteritems():
         data = re.sub(key, val, data)        
 
 
     print(data)
-    ################### save output
-    output = "latex2txt_test.txt"
-   
+
+    # Save output to text to observe subsitions
+    output = fname.split(".")
+    output.pop()
+    output = output[0] +".txt"
+    
     with open(output, "w") as fo:
         fo.write(data)
     print('Saved to ' + output )
 
-
-    #s = '234.4'
-    #s = 'test1.test2(test3);'
-    #s.replace(\^([^\.]))
-    #print(s)
-
-
+    # Currently saving to txt file so that it be read by a tts program
+    # Ideally use something already implemented in python
 
 if __name__ == "__main__":
     main()
