@@ -66,6 +66,7 @@ def main_regex():
     misc = {r" ?Myr ?":" Mega years ", \
             r" ?SNR ?":" signal to noise ratio ",\
             r" ?S/N ?":" Signal to noise ", \
+            r'(\d+)\"':"\g<1> arcsecond", \
             } 
 
     units = {r"( |\\,)s\$?\^{-2}\$?":' per second squared', \
