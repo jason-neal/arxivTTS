@@ -4,6 +4,23 @@ import re
 
 
 
+
+def get_axiv_src(arxivname):
+    """export.arxiv.org/e-print/arxivname     # source location
+    http://export.arxiv.org/abs/1510.06642    # abstract webpage
+    http://export.arxiv.org/pdf/1510.06642v1  # the pdf
+    # ability to take in any of these inputs could be good in future
+    """
+    # download source for arxivname article to tmp folder
+    
+    # extract and find .tex file
+
+    # suprocess??
+    
+    # return tex file name/location
+    pass 
+    
+
 def merge_dicts(*dict_args):
     '''
     Given any number of dics, shallow copy and merge into a new dict, 
@@ -18,8 +35,7 @@ def merge_dicts(*dict_args):
 
 def main():
     fname ="Test_articles/trigger_solar_system_5R1.tex"
-    print(fname)
-    #text_filter(inputname)
+    
     with open(fname, 'r') as f:
         data = ""
         readflag = False
@@ -29,6 +45,7 @@ def main():
                 #data += line[7:-2] + "\n"
             if line.startswith("\\author"):
                 # match first author in []
+                # beautifulsoup parseing like roboph?
                 print(line)
                 for j, char in enumerate(line):
                     if char == "&":
