@@ -11,6 +11,7 @@ def cat_lists(*list_args):
     result = []
     for List in list_args:
         result.extend(List)
+
     return result
 
 def regex_sub(data):
@@ -139,6 +140,7 @@ def regex_lists():
     other = [(r"([A-Za-z]+)\-\-([A-Za-z]+)", r" \g<1>-\g<2>"), \
              (r"(\d+) ?\-\- ?(\d+)", r"\g<1> to \g<2>"), \
              (r"\$?(\w+)_{(.+?)}\$?", r"\g<1> sub \g<2>"), \
+             (r"(\d{1,3}) (\d{3})", r"\g<1>,\g<2>"), \
              ] 
             # (r"([0-9]+)\.([0-9]+)", r" \g<1> point \g<2>"), \
     
