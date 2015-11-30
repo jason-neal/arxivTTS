@@ -2,8 +2,7 @@
 #-*- coding: utf-8 -*-
 import re
 
-from tex_regex import do_sub
-
+from list_regex import regex_sub
 
 def get_axiv_src(arxivname):
     """export.arxiv.org/e-print/arxivname     # source location
@@ -23,6 +22,7 @@ def get_axiv_src(arxivname):
 
 def main():
     fname ="Test_articles/trigger_solar_system_5R1.tex"
+    #fname ="Test_articles/Trifonov_2015.tex"
     
     with open(fname, 'r') as f:
         data = ""
@@ -98,10 +98,14 @@ def main():
                 continue
             if readflag:
                 data += line
-            
+        # subsections
+
+        # chapters for extension to other documents?     
+
+
     #print(data)
     
-    data = do_sub(data) # Regex latex substituions performed
+    data = regex_sub(data) # Regex latex substituions performed
     
     #print(data)
 
