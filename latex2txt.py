@@ -1,8 +1,11 @@
 #!/usr/local/bin/python3
 #-*- coding: utf-8 -*-
 import re
-
+import tarfile
+#from os import subprocess
 from list_regex import regex_sub
+from Arxiv import findRefType, downloadSource
+
 
 def get_axiv_src(arxivname):
     """export.arxiv.org/e-print/arxivname     # source location
@@ -10,20 +13,30 @@ def get_axiv_src(arxivname):
     http://export.arxiv.org/pdf/1510.06642v1  # the pdf
     # ability to take in any of these inputs could be good in future
     """
+    ref = arxivname.split("/").pop()
+    print("reference from arxivname", ref)
+    Download_path = "TMP/"
     # download source for arxivname article to tmp folder
-    
-    # extract and find .tex file
+    Type, ref = findRefType(ref)
+    tar = tarfile.open(Download_path+ref, mode="r")
 
-    # suprocess??
+    # extract and find .tex file
+    texfile = [x for x in tar.getmembers() if ".tex" in x.name]
+    if len(texfile) >1:
+        print("More than one tex file found")
+
+    filename = texfile[0].name
+    tar.extractall(members=texfile)
     
-    # return tex file name/location
-    pass 
+    return filename 
     
 
 def main():
-    fname ="Test_articles/trigger_solar_system_5R1.tex"
+    #fname ="Test_articles/trigger_solar_system_5R1.tex"
     #fname ="Test_articles/Trifonov_2015.tex"
-    
+    url = "http://arxiv.org/e-print/1512.01087"
+    Download_path = "TMP/"
+    fname = get_axiv_src(url)
     with open(fname, 'r') as f:
         data = ""
         readflag = False
