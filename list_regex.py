@@ -41,20 +41,20 @@ def regex_lists():
                     (r"\\emph{(.*?)}", r" \g<1> "), \
                     (r"\\small ?", r""), \
                     ]    
-     elements = [(r"\$\^{60}\$Fe", " Iron-60"), \
+    elements = [(r"\$\^{60}\$Fe", " Iron-60"), \
                 (r"\$\^{26}\$Al", "Aluminium-26"), \
                 ]
 
     powers = [(r"m( |\\,)?s\$\^{-1}\$", r" meters per second "), \
               (r"( |\\,)s\$\^{-1}\$", r" per second "), \
-    		  (r"( |\\,)s\$\^{-2}\$", r" per second squared "), \
-    		  (r" ([A-Za-z]+ ?)\$?\^{-2}\$?", r" per \g<1> squared "), \
-    		  (r" ?\^\{2\}\$?", r" squared"), \
-   			  (r" ?\^\{3\}\$?", r" cubed"), \
-    	 	  (r"\$?(\d+) ?\^{?\-(\d+)}?\$?", r"\g<1> to the power of negative \g<2>"), \
+              (r"( |\\,)s\$\^{-2}\$", r" per second squared "), \
+              (r" ([A-Za-z]+ ?)\$?\^{-2}\$?", r" per \g<1> squared "), \
+              (r" ?\^\{2\}\$?", r" squared"), \
+              (r" ?\^\{3\}\$?", r" cubed"), \
+              (r"\$?(\d+) ?\^{?\-(\d+)}?\$?", r"\g<1> to the power of negative \g<2>"), \
               (r"\$?(\d+) ?\^{?(\d+)}?\$?", r" \g<1> to the power of \g<2> "), \
               (r"\$\^{?(\d+)}?\$", r" to the power of \g<1> "), \
-    		  ]        
+              ]        
 
     symbols = [(r"\\hbar", " hbar "), \
                 (r"\\nabla", " nabla "), \
@@ -163,9 +163,9 @@ def regex_lists():
     accents = []
     
 
-	# Need to be careful of ordering
+    # Need to be careful of ordering
     regexs = cat_lists(space, font_formats, elements, powers, symbols, trig, greek, 
-    					solarsys, units, abrev, other, citations, 
-    					accents, clean)
+                        solarsys, units, abrev, other, citations, 
+                        accents, clean)
    
     return regexs
