@@ -33,7 +33,10 @@ def get_axiv_src(arxivname):
     tar.extractall(members=texfile)
     
     return filename 
-    
+
+def get_label(line, label_dict):
+    """ Get label from this line and add to the corresponding dict"""
+    pass
 
 def main():
     #fname ="Test_articles/trigger_solar_system_5R1.tex"
@@ -52,17 +55,35 @@ def main():
         equationflag = False
         alignflag = False
         for i, line in enumerate(f):
-           # print(line)
+                        
+            if line.startswith("%"): # SKIPING Comments
+                continue
+            if line.startswith("$^{"):
+                continue
+            
+            if line.startswith("\\bibliography"):
+                continue
+            if line.startswith("\\end{document"):
+                continue
+
+            if line.startswith("\\begin{abstract}"):
+                readflag = True
+                continue
+            if line.startswith("\\end{abstract}"):
+                readflag = False
+                continue        
 
             if line.startswith("\\title"):
-                data += re.sub(r"\\title\[(.*)\]{(.*)}", r"\g<1> - \g<2>\n", line)
+            	titleline = re.sub(r"\\title\[(.*)\]\{(.*)\}", r"\g<1> - \g<2>\n", line)
+            	titleline = re.sub(r"\\title\{(.*)\}", r"\g<1>\n", titleline)
+                data += titleline
                 #data += line[7:-2] + "\n"
             if line.startswith("\\author"):
                 # match first author in []
-                # beautifulsoup parseing like roboph?
-                print(line)
-                limit = -1
-                etal = ""
+                # can have multiple single authors
+                # beautifulsoup parsing like roboph?
+                limit = -1    # default to end of line
+                etal = ""     # default to blank
                 for j, char in enumerate(line):
                     if char == "&":
                         limit = j
@@ -75,34 +96,43 @@ def main():
                         limit = -1
                         etal = ""
                 author = line[8:limit-1]
-                if authorflag:
-                        data += "By " + author + etal + "\n"
+                if authorflag:  # there has been a previous \author line
+                    data += "and " + author + etal + "\n"     
                 else:
-                	data += "and " + author + etal + "\n"
+                    data += "By " + author + etal + "\n"
                 authorflag = True    # if author called multiple times
-            #if line.endswith("\\\\"):
-                # line continues may need something here
-            #    pass
-            if line.startswith("$^{"):
-                continue
-            if line.startswith("\\begin{abstract}"):
-                readflag = True
-                continue
-            if line.startswith("\\end{abstract}"):
+                        
+            if line.startswith("\\begin{table"):
                 readflag = False
-                continue          
-            if line.startswith("\\section{"):
-                data += "\n" + line[9:-2] + "\n"
+                continue
+            if line.startswith("\\end{table"):
                 readflag = True
                 continue
-            if line.startswith("\\section*"):
-                data += "\n" + line[10:-2] + "\n"
+
+            if line.startswith("\\section"):
+            	match = re.sub(r"\\section\*?{(.*?)}.*",r"\g<1>", line)
+            	print("section match", match)
+                data += "\n" + match + "\n"
+                readflag = True
+                if "\\label" in line:
+                	#get_label(line, "section")
+                	pass
+                continue
+                       
+            if line.startswith("\\subsection"):
+            	match = re.sub(r"\\subsection\*?{(.*?)}.*",r"\g<1>", line)
+                data += "\n" + match + "\n"
+               # data += "\n" + line[12:-2] + "\n"match
                 readflag = True
                 continue
+                  
             if line.startswith("\\label"):
             	############ TO DO #################
             	# store labels in dicts with order number
+            	label_val = re.sub(r"\\label\*?\{(.*?)\}.*", r"\g<1>", line)
+            	#get_label(line, )
                 continue
+            
             if line.startswith("\\begin{figure"):
                 readflag = False
                 figureflag = True
@@ -111,6 +141,7 @@ def main():
                 readflag = True
                 figureflag = False
                 continue
+            
             if line.startswith("\\begin{equation"):
                 readflag = False
                 equationflag = True
@@ -120,6 +151,7 @@ def main():
                 readflag = True
                 equationflag = False
                 continue
+            
             if line.startswith("\\begin{align"):
                 readflag = False
                 alignflag = True
@@ -128,25 +160,11 @@ def main():
             if line.startswith("\\end{align"):
                 readflag = True
                 alignflag = False
-            continue
-                
-            if line.startswith("%"):
-                # SKIPING Comments
-                continue
-            if line.startswith("\\bibliography"):
-                continue
-            if line.startswith("\\end{document"):
-                continue
-            if line.startswith("\\begin{table"):
-                readflag = False
-                continue
-            if line.startswith("\\begin{table"):
-                readflag = True
-                continue
+            	continue
+            
             if readflag:
                 data += line
-        # subsections
-
+        
         # chapters for extension to other documents?     
 
 
