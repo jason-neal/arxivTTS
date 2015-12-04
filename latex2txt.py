@@ -3,6 +3,7 @@
 import re
 import tarfile
 #from os import subprocess
+import pyttsx
 from list_regex import regex_sub
 from Arxiv import findRefType, downloadSource
 
@@ -14,17 +15,20 @@ def get_axiv_src(arxivname):
     # ability to take in any of these inputs could be good in future
     """
     ref = arxivname.split("/").pop()
-    print("reference from arxivname", ref)
+    if "arXiv" in ref:
+    	ref = ref.split(":").pop()
+    print("ArXiv reference =", ref)
     Download_path = "TMP/"
     # download source for arxivname article to tmp folder
     Type, ref = findRefType(ref)
+    downloadSource(ref, Type, Download_path)  # download the data
     tar = tarfile.open(Download_path+ref, mode="r")
-
+    
     # extract and find .tex file
     texfile = [x for x in tar.getmembers() if ".tex" in x.name]
     if len(texfile) >1:
         print("More than one tex file found")
-
+    print(texfile)
     filename = texfile[0].name
     tar.extractall(members=texfile)
     
@@ -34,7 +38,9 @@ def get_axiv_src(arxivname):
 def main():
     #fname ="Test_articles/trigger_solar_system_5R1.tex"
     #fname ="Test_articles/Trifonov_2015.tex"
-    url = "http://arxiv.org/e-print/1512.01087"
+    #url = "http://arxiv.org/e-print/1512.01087"
+    url = "arXiv:1512.00492"
+    #url = "http://arxiv.org/abs/1512.00777"
     Download_path = "TMP/"
     fname = get_axiv_src(url)
     with open(fname, 'r') as f:
@@ -150,7 +156,7 @@ def main():
     
     #print(data)
 
-    # Save output to text to observe subsitions
+    # Save output to text to observe the text
     output = fname.split(".")
     output.pop()
     output = output[0] +".txt"
@@ -161,6 +167,9 @@ def main():
 
     # Currently saving to txt file so that it be read by a tts program
     # Ideally use something already implemented in python
+    
+    #pyttsx
+
 
 if __name__ == "__main__":
     main()
