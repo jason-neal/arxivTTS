@@ -38,9 +38,13 @@ def main():
     Download_path = "TMP/"
     fname = get_axiv_src(url)
     with open(fname, 'r') as f:
+    	#Initalizing
         data = ""
         readflag = False
-        author_flag = False
+        authorflag = False
+        figureflag = False
+        equationflag = False
+        alignflag = False
         for i, line in enumerate(f):
            # print(line)
 
@@ -65,11 +69,11 @@ def main():
                         limit = -1
                         etal = ""
                 author = line[8:limit-1]
-                if author_flag:
+                if authorflag:
                         data += "By " + author + etal + "\n"
                 else:
                 	data += "and " + author + etal + "\n"
-                author_flag = True    # if author called multiple times
+                authorflag = True    # if author called multiple times
             #if line.endswith("\\\\"):
                 # line continues may need something here
             #    pass
@@ -90,21 +94,36 @@ def main():
                 readflag = True
                 continue
             if line.startswith("\\label"):
+            	############ TO DO #################
+            	# store labels in dicts with order number
                 continue
             if line.startswith("\\begin{figure"):
                 readflag = False
+                figureflag = True
                 continue
             if line.startswith("\\end{figure"):
                 readflag = True
+                figureflag = False
                 continue
             if line.startswith("\\begin{equation"):
                 readflag = False
+                equationflag = True
             # print("skipping equation-handle later")
                 continue
             if line.startswith("\\end{equation"):
                 readflag = True
+                equationflag = False
                 continue
-                pass
+            if line.startswith("\\begin{align"):
+                readflag = False
+                alignflag = True
+            # print("skipping align-handle later")
+                continue
+            if line.startswith("\\end{align"):
+                readflag = True
+                alignflag = False
+            continue
+                
             if line.startswith("%"):
                 # SKIPING Comments
                 continue
