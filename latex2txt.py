@@ -40,7 +40,10 @@ def main():
     with open(fname, 'r') as f:
         data = ""
         readflag = False
+        author_flag = False
         for i, line in enumerate(f):
+           # print(line)
+
             if line.startswith("\\title"):
                 data += re.sub(r"\\title\[(.*)\]{(.*)}", r"\g<1> - \g<2>\n", line)
                 #data += line[7:-2] + "\n"
@@ -48,6 +51,8 @@ def main():
                 # match first author in []
                 # beautifulsoup parseing like roboph?
                 print(line)
+                limit = -1
+                etal = ""
                 for j, char in enumerate(line):
                     if char == "&":
                         limit = j
@@ -56,14 +61,18 @@ def main():
                     elif char == "]":
                         limit = j
                         etal = ""
-                    elif i == len(line):
+                    elif j == len(line):
                         limit = -1
                         etal = ""
                 author = line[8:limit-1]
-                data += "By " + author + etal + "\n"
-                if line.endswith("\\\\"):
-                    # line continues may need something here
-                    pass
+                if author_flag:
+                        data += "By " + author + etal + "\n"
+                else:
+                	data += "and " + author + etal + "\n"
+                author_flag = True    # if author called multiple times
+            #if line.endswith("\\\\"):
+                # line continues may need something here
+            #    pass
             if line.startswith("$^{"):
                 continue
             if line.startswith("\\begin{abstract}"):
