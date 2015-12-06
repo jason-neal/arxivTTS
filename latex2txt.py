@@ -183,8 +183,10 @@ def main():
     # Currently saving to txt file so that it be read by a tts program
     # Ideally use something already implemented in python
     if saveWave:   # tts
+    	start = time.time()
     	subprocess.call(["text2wave " + output_txt + " -o " + output_wav], shell=True)
 	    print("Finished saving to arXiv:" + ref + " to " + output_wav)
+	    print("Time to save audio = " + str(time.time()-start) + " seconds")
 
 	    ### Other tts methods to continue investigating in future
         
