@@ -1,8 +1,10 @@
 #!/usr/local/bin/python3
 #-*- coding: utf-8 -*-
 import re
+import time
 import tarfile
 import subprocess
+import argparse
 #from os import subprocess
 import pyttsx
 from list_regex import regex_sub
@@ -17,9 +19,9 @@ def get_axiv_src(arxivname):
     """
     ref = arxivname.split("/").pop()
     if "arXiv" in ref:
-    	ref = ref.split(":").pop()
+        ref = ref.split(":").pop()
     print("ArXiv reference =", ref)
-    Download_path = "TMP/"
+    Download_path = "SRC/"
     # download source for arxivname article to tmp folder
     Type, ref = findRefType(ref)
     downloadSource(ref, Type, Download_path)  # download the data
@@ -33,30 +35,52 @@ def get_axiv_src(arxivname):
     filename = texfile[0].name
     tar.extractall(members=texfile)
     
-    return filename 
+    return filename, ref
 
 def get_label(line, label_dict):
     """ Get label from this line and add to the corresponding dict"""
     pass
 
-def main():
+def _parser():
+    """Take care of all the argparse stuff.
+
+    :returns: the args
+    """
+    parser = argparse.ArgumentParser(description="Arxiv Text-To-Speach")
+    parser.add_argument('arxivID', help='Arxiv Identifier')
+    parser.add_argument('-o', '--output', default=False,
+                        help='Ouput Filename',)
+    parser.add_argument('-t', '--saveText', default=False,
+                       help='Save the text file')
+    parser.add_argument('-s', '--saveWave', default=True,
+                       help='Save the wavefile')
+    parser.add_argument('-k','--keepSrc', default=False,
+                       help='Keep source files')
+    parser.add_argument('--ftype', default="wav",
+                       help='Output audio file type')
+
+    args = parser.parse_args()
+    return args
+
+def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ftype="wav"):
     #fname ="Test_articles/trigger_solar_system_5R1.tex"
     #fname ="Test_articles/Trifonov_2015.tex"
     #url = "http://arxiv.org/e-print/1512.01087"
-    saveText= True
-    saveWave= True
-    url = "arXiv:1512.00492"
+    #saveText = True
+    #saveWave = True
+    #url = "arXiv:1512.00492"
     #url = "http://arxiv.org/abs/1512.00777"
-    Download_path = "TMP/"
-    fname = get_axiv_src(url)
+   
+    fname, srcname = get_axiv_src(arxivID)
     with open(fname, 'r') as f:
-    	#Initalizing
+        #Initalizing
         data = ""
         readflag = False
         authorflag = False
         figureflag = False
         equationflag = False
         alignflag = False
+
         for i, line in enumerate(f):
                         
             if line.startswith("%"): # SKIPING Comments
@@ -77,8 +101,8 @@ def main():
                 continue        
 
             if line.startswith("\\title"):
-            	titleline = re.sub(r"\\title\[(.*)\]\{(.*)\}", r"\g<1> - \g<2>\n", line)
-            	titleline = re.sub(r"\\title\{(.*)\}", r"\g<1>\n", titleline)
+                titleline = re.sub(r"\\title\[(.*)\]\{(.*)\}", r"\g<1> - \g<2>\n", line)
+                titleline = re.sub(r"\\title\{(.*)\}", r"\g<1>\n", titleline)
                 data += titleline
                 #data += line[7:-2] + "\n"
             if line.startswith("\\author"):
@@ -113,26 +137,26 @@ def main():
                 continue
 
             if line.startswith("\\section"):
-            	match = re.sub(r"\\section\*?{(.*?)}.*",r"\g<1>", line)
+                match = re.sub(r"\\section\*?{(.*?)}.*",r"\g<1>", line)
                 data += "\n" + match + "\n"
                 readflag = True
                 if "\\label" in line:
-                	#get_label(line, "section")
-                	pass
+                    #get_label(line, "section")
+                    pass
                 continue
                        
             if line.startswith("\\subsection"):
-            	match = re.sub(r"\\subsection\*?{(.*?)}.*",r"\g<1>", line)
+                match = re.sub(r"\\subsection\*?{(.*?)}.*",r"\g<1>", line)
                 data += "\n" + match + "\n"
                # data += "\n" + line[12:-2] + "\n"match
                 readflag = True
                 continue
                   
             if line.startswith("\\label"):
-            	############ TO DO #################
-            	# store labels in dicts with order number
-            	label_val = re.sub(r"\\label\*?\{(.*?)\}.*", r"\g<1>", line)
-            	#get_label(line, )
+                ############ TO DO #################
+                # store labels in dicts with order number
+                label_val = re.sub(r"\\label\*?\{(.*?)\}.*", r"\g<1>", line)
+                #get_label(line, )
                 continue
             
             if line.startswith("\\begin{figure"):
@@ -162,7 +186,7 @@ def main():
             if line.startswith("\\end{align"):
                 readflag = True
                 alignflag = False
-            	continue
+                continue
             
             if readflag:
                 data += line
@@ -178,40 +202,49 @@ def main():
     output_txt = output[0] +".txt"
     output_wav = output[0] +".wav"
     with open(output_txt, "w") as fo:
-       	fo.write(data)
+           fo.write(data)
     print('Saved to ' + output_txt )
     # Currently saving to txt file so that it be read by a tts program
     # Ideally use something already implemented in python
     if saveWave:   # tts
-    	start = time.time()
-    	subprocess.call(["text2wave " + output_txt + " -o " + output_wav], shell=True)
-	    print("Finished saving to arXiv:" + ref + " to " + output_wav)
-	    print("Time to save audio = " + str(time.time()-start) + " seconds")
+        start = time.time()
+        print("Saving audio ...")
+        subprocess.call(["text2wave " + output_txt + " -o " + output_wav], shell=True)
+        print("Finished saving to arXiv:" + srcname + " to " + output_wav)
+        print("Time to save audio = " + str(time.time()-start) + " seconds")
 
-	    ### Other tts methods to continue investigating in future
+        ### Other tts methods to continue investigating in future
         
-	    ###### Google TTS
-	    #import GoogleTTS
-		# GoogleTTS.audio_extract(input_text='tunnel snakes rule apparently', args = {'language':'en','output':'outputto.mp3'})
-    	#.HTTP Error 503: Service Unavailable
+        ###### Google TTS
+        #import GoogleTTS
+        # GoogleTTS.audio_extract(input_text='tunnel snakes rule apparently', args = {'language':'en','output':'outputto.mp3'})
+        #.HTTP Error 503: Service Unavailable
 
         #####Pyvona
 
         ###### gtts Google TTS
         #from gtts import gTTS
-		# Text = "This should be saved as a mp3"
-		# tts = gTTS(text="Text", lang="en") 
-		# tts.save("hello.mp3")
+        # Text = "This should be saved as a mp3"
+        # tts = gTTS(text="Text", lang="en") 
+        # tts.save("hello.mp3")
 
-    	###### pyttsx
-    	# engine = pyttsx.init()
-    	# engine.say("Testing speach engine")
-    	# engine.say(data)
-    	# engine.runAndWait()
-    	
+        ###### pyttsx
+        # engine = pyttsx.init()
+        # engine.say("Testing speach engine")
+        # engine.say(data)
+        # engine.runAndWait()
+        
+    print("Cleaning up ...")
+    if not keepSrc:
+        subprocess.call(["rm " +"SRC/" + srcname], shell=True) # remove text file
+
     if not saveText:
-		subprocess.call(["rm " + fname], shell=True) # remove text file
+        subprocess.call(["rm " + fname], shell=True) # remove text file
 
 
 if __name__ == "__main__":
-    main()
+    args = vars(_parser())
+    arxivID = args.pop('arxivID')
+    opts = {k: args[k] for k in args}
+
+    main(arxivID, **opts)
