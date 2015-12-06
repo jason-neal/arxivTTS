@@ -2,6 +2,7 @@
 #-*- coding: utf-8 -*-
 import re
 import tarfile
+import subprocess
 #from os import subprocess
 import pyttsx
 from list_regex import regex_sub
@@ -42,6 +43,8 @@ def main():
     #fname ="Test_articles/trigger_solar_system_5R1.tex"
     #fname ="Test_articles/Trifonov_2015.tex"
     #url = "http://arxiv.org/e-print/1512.01087"
+    saveText= True
+    saveWave= True
     url = "arXiv:1512.00492"
     #url = "http://arxiv.org/abs/1512.00777"
     Download_path = "TMP/"
@@ -111,7 +114,6 @@ def main():
 
             if line.startswith("\\section"):
             	match = re.sub(r"\\section\*?{(.*?)}.*",r"\g<1>", line)
-            	print("section match", match)
                 data += "\n" + match + "\n"
                 readflag = True
                 if "\\label" in line:
@@ -167,26 +169,46 @@ def main():
         
         # chapters for extension to other documents?     
 
-
-    #print(data)
-    
     data = regex_sub(data) # Regex latex substituions performed
     
-    #print(data)
-
-    # Save output to text to observe the text
+    #if savetext:
+    # Save output to text file
     output = fname.split(".")
     output.pop()
-    output = output[0] +".txt"
-    
-    with open(output, "w") as fo:
-        fo.write(data)
-    print('Saved to ' + output )
-
+    output_txt = output[0] +".txt"
+    output_wav = output[0] +".wav"
+    with open(output_txt, "w") as fo:
+       	fo.write(data)
+    print('Saved to ' + output_txt )
     # Currently saving to txt file so that it be read by a tts program
     # Ideally use something already implemented in python
-    
-    #pyttsx
+    if saveWave:   # tts
+    	subprocess.call(["text2wave " + output_txt + " -o " + output_wav], shell=True)
+	    print("Finished saving to arXiv:" + ref + " to " + output_wav)
+
+	    ### Other tts methods to continue investigating in future
+        
+	    ###### Google TTS
+	    #import GoogleTTS
+		# GoogleTTS.audio_extract(input_text='tunnel snakes rule apparently', args = {'language':'en','output':'outputto.mp3'})
+    	#.HTTP Error 503: Service Unavailable
+
+        #####Pyvona
+
+        ###### gtts Google TTS
+        #from gtts import gTTS
+		# Text = "This should be saved as a mp3"
+		# tts = gTTS(text="Text", lang="en") 
+		# tts.save("hello.mp3")
+
+    	###### pyttsx
+    	# engine = pyttsx.init()
+    	# engine.say("Testing speach engine")
+    	# engine.say(data)
+    	# engine.runAndWait()
+    	
+    if not saveText:
+		subprocess.call(["rm " + fname], shell=True) # remove text file
 
 
 if __name__ == "__main__":
