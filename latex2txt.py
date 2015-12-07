@@ -1,5 +1,6 @@
-#!/usr/local/bin/python3
+#!/usr/bin/env python
 #-*- coding: utf-8 -*-
+
 import re
 import time
 import tarfile
@@ -9,7 +10,7 @@ import argparse
 import pyttsx
 from list_regex import regex_sub
 from Arxiv import findRefType, downloadSource
-
+"""#!/usr/local/bin/python3"""
 
 def get_axiv_src(arxivname):
     """export.arxiv.org/e-print/arxivname     # source location
@@ -24,8 +25,9 @@ def get_axiv_src(arxivname):
     Download_path = "SRC/"
     # download source for arxivname article to tmp folder
     Type, ref = findRefType(ref)
+    print("Type ", Type, "Ref =", ref)
     downloadSource(ref, Type, Download_path)  # download the data
-    tar = tarfile.open(Download_path+ref, mode="r")
+    tar = tarfile.open(Download_path + ref, mode="r")
     
     # extract and find .tex file
     texfile = [x for x in tar.getmembers() if ".tex" in x.name]
