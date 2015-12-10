@@ -10,17 +10,18 @@ Currently the text is sent to an external TTS program text2wav to save the spoke
 
 #####Python modules
 These may need to be ran with sudo.
-
 	* [argparse](https://docs.python.org/2/howto/argparse.html)
-	`pip install argparse`
-	* [re](https://docs.python.org/2.7/library/re.html)
-	`pip install re`
+	* [re](https://docs.python.org/2.7/library/re.html)	
 	* [requests](http://docs.python-requests.org/en/latest/)
-	`pip install requests`
 	* [tarfile](https://docs.python.org/2/library/tarfile.html)
-	`pip install tarfile`
-	* [Arxiv.py](http://stringwiki.org/wiki/ArXiv_script) - For getting arxiv source files.
+	* [Arxiv.py](http://stringwiki.org/wiki/ArXiv_script) 
 
+`pip install argparse`
+`pip install re`
+`pip install requests`
+`pip install tarfile`
+
+ Arxiv.py needs tobe downloaded manually from the wiki.
 #####TTS
 	festival (text2wav specifically)
 
@@ -30,14 +31,17 @@ There are a number of other TTS options available.
 These still need some testing to find the best TTS engine and good voices.
 
 These are
-####Python modules 
-	pyttsx  - platform independant
-	```pip install pyttsx```
-	gtts?
-	```pip install gtts```
-	GoogleTTS
 
-###Linux programs
+####Python modules 
+pyttsx  - platform independant
+	pip install pyttsx
+
+gtts?
+	pip install gtts
+
+GoogleTTS
+
+####Linux programs
 	espeak - used with pyttsx
 	festival - text2wave
 
@@ -46,11 +50,11 @@ These are
 
 It can be run from the command line like
 
-	`python arxivTTS.py {arxiv reference}`
+	python arxivTTS.py {arxiv reference}
 
 or 
 
-	`arxivTTS.py {arxiv reference}`
+	arxivTTS.py {arxiv reference}
 
 if made executable with `chmod +x arxivTTS.py`.
 
