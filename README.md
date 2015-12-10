@@ -11,7 +11,7 @@ Currently the text is sent to an external TTS program text2wav to save the spoke
 #####Python modules
 These may need to be ran with sudo.
 	* [argparse](https://docs.python.org/2/howto/argparse.html)
-	* [re](https://docs.python.org/2.7/library/re.html)	
+	* [re](https://docs.python.org/2.7/library/re.html)
 	* [requests](http://docs.python-requests.org/en/latest/)
 	* [tarfile](https://docs.python.org/2/library/tarfile.html)
 	* [Arxiv.py](http://stringwiki.org/wiki/ArXiv_script) 
