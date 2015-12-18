@@ -64,11 +64,13 @@ def _parser():
                        help='Audio output extension')
     parser.add_argument('-a','--autoplay', default=False,
                        help='Automatically start playing')
+    parser.add_argument('-p','--player', default="mplayer",
+                       help='Mediaplayer to use for autoplay')
 
     args = parser.parse_args()
     return args
 
-def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ext="wav", autoplay="False"):
+def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ext="mp3", autoplay=False, player="mplayer"):
     #fname ="Test_articles/trigger_solar_system_5R1.tex"
     #fname ="Test_articles/Trifonov_2015.tex"
     #url = "http://arxiv.org/e-print/1512.01087"
@@ -233,7 +235,8 @@ def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ex
         
         if autoplay:
         	""" Playing audio file just created """
-        	subprocess.call(["pmlayer " + output_audio], shell=True)
+        	# possibly need different calls depending on the players if they have different input params, i.e. for speed etc
+        	subprocess.call([player + output_audio], shell=True)
         
 
         ### Other tts methods to continue investigating in future
