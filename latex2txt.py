@@ -60,13 +60,13 @@ def _parser():
                        help='Save the wavefile')
     parser.add_argument('-k','--keepSrc', default=False,
                        help='Keep source files')
-    parser.add_argument('--ftype', default="wav",
-                       help='Output audio file type')
+    parser.add_argument('-e', '--ext', default="mp3",
+                       help='Audio output extension')
 
     args = parser.parse_args()
     return args
 
-def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ftype="wav"):
+def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ext="wav"):
     #fname ="Test_articles/trigger_solar_system_5R1.tex"
     #fname ="Test_articles/Trifonov_2015.tex"
     #url = "http://arxiv.org/e-print/1512.01087"
@@ -74,7 +74,12 @@ def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ft
     #saveWave = True
     #url = "arXiv:1512.00492"
     #url = "http://arxiv.org/abs/1512.00777"
-   
+    valid_audio = ["wav","mp3"]
+    if ext not in valid_audio
+    	print(ext + " is not a valid audio output type")
+    	print("Valid audio types are", valid_audio)
+    	raise(typeError)
+
     fname, srcname = get_axiv_src(arxivID)
     with open(fname, 'r') as f:
         #Initalizing
@@ -204,7 +209,7 @@ def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ft
     output = fname.split(".")
     output.pop()
     output_txt = output[0] +".txt"
-    output_wav = output[0] +".wav"
+    output_audo = output[0] +".wav"
     with open(output_txt, "w") as fo:
            fo.write(data)
     print('Saved to ' + output_txt )
