@@ -62,11 +62,13 @@ def _parser():
                        help='Keep source files')
     parser.add_argument('-e', '--ext', default="mp3",
                        help='Audio output extension')
+    parser.add_argument('-a','--autoplay', default=False,
+                       help='Automatically start playing')
 
     args = parser.parse_args()
     return args
 
-def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ext="wav"):
+def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ext="wav", autoplay="False"):
     #fname ="Test_articles/trigger_solar_system_5R1.tex"
     #fname ="Test_articles/Trifonov_2015.tex"
     #url = "http://arxiv.org/e-print/1512.01087"
@@ -75,7 +77,7 @@ def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ex
     #url = "arXiv:1512.00492"
     #url = "http://arxiv.org/abs/1512.00777"
     valid_audio = ["wav","mp3"]
-    if ext not in valid_audio
+    if ext not in valid_audio:
     	print(ext + " is not a valid audio output type")
     	print("Valid audio types are", valid_audio)
     	raise(typeError)
@@ -215,12 +217,24 @@ def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ex
     print('Saved to ' + output_txt )
     # Currently saving to txt file so that it be read by a tts program
     # Ideally use something already implemented in python
-    if saveWave:   # tts
+    if not saveWave:
+    	if autoplay:
+    		print("Need txt2speach commandline code here for subprocess call")
+    		subprocess.call(["festival " + output_txt], shell=True) # remove text file
+    	else:
+    		print("Not saving audio file or playing audio")
+   
+    else:   # tts
         start = time.time()
         print("Saving audio ...")
         subprocess.call(["text2wave " + output_txt + " -o " + output_wav], shell=True)
         print("Finished saving to arXiv:" + srcname + " to " + output_wav)
         print("Time to save audio = " + str(time.time()-start) + " seconds")
+        
+        if autoplay:
+        	""" Playing audio file just created """
+        	subprocess.call(["pmlayer " + output_audio], shell=True)
+        
 
         ### Other tts methods to continue investigating in future
         
@@ -243,12 +257,16 @@ def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ex
         # engine.say(data)
         # engine.runAndWait()
         
+
     print("Cleaning up ...")
     if not keepSrc:
         subprocess.call(["rm " +"SRC/" + srcname], shell=True) # remove text file
 
     if not saveText:
         subprocess.call(["rm " + fname], shell=True) # remove text file
+
+
+
 
 
 if __name__ == "__main__":
