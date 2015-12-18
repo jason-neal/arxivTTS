@@ -15,12 +15,14 @@ from Arxiv import findRefType, downloadSource
 def get_axiv_src(arxivname):
     """export.arxiv.org/e-print/arxivname     # source location
     http://export.arxiv.org/abs/1510.06642    # abstract webpage
-    http://export.arxiv.org/pdf/1510.06642v1  # the pdf
+    http://export.arxiv.org/pdf/1510.06642v1.pdf  # the pdf
     # ability to take in any of these inputs could be good in future
     """
     ref = arxivname.split("/").pop()
     if "arXiv" in ref:
         ref = ref.split(":").pop()
+    if ref.endswith(".pdf"):
+    	ref.replace(".pdf","")
     print("ArXiv reference =", ref)
     Download_path = "SRC/"
     # download source for arxivname article to tmp folder
