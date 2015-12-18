@@ -7,7 +7,7 @@ import tarfile
 import subprocess
 import argparse
 #from os import subprocess
-import pyttsx
+#import pyttsx
 from list_regex import regex_sub
 from Arxiv import findRefType, downloadSource
 """#!/usr/local/bin/python3"""
