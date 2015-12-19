@@ -24,7 +24,7 @@ def get_axiv_src(arxivname):
     
     if ref.endswith(".pdf"):
     	ref = ref.replace(".pdf","")
-        
+
     print("ArXiv reference =", ref)
     Download_path = "SRC/"
     # download source for arxivname article to tmp folder
@@ -68,11 +68,13 @@ def _parser():
                        help='Automatically start playing')
     parser.add_argument('-p','--player', default="mplayer",
                        help='Mediaplayer to use for autoplay')
+    parser.add_argument('--options', default="",
+                       help='Extra command line player options')
 
     args = parser.parse_args()
     return args
 
-def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ext="mp3", autoplay=False, player="mplayer"):
+def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ext="mp3", autoplay=False, player="mplayer", options=""):
     #fname ="Test_articles/trigger_solar_system_5R1.tex"
     #fname ="Test_articles/Trifonov_2015.tex"
     #url = "http://arxiv.org/e-print/1512.01087"
@@ -215,7 +217,7 @@ def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ex
     output = fname.split(".")
     output.pop()
     output_txt = output[0] +".txt"
-    output_audo = output[0] +".wav"
+    output_audio = output[0] +"."+ ext
     with open(output_txt, "w") as fo:
            fo.write(data)
     print('Saved to ' + output_txt )
@@ -224,21 +226,21 @@ def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ex
     if not saveWave:
     	if autoplay:
     		print("Need txt2speach commandline code here for subprocess call")
-    		subprocess.call(["festival " + output_txt], shell=True) # remove text file
+    		subprocess.call(["festival --tts " + output_txt +  " " + options], shell=True) # remove text file
     	else:
     		print("Not saving audio file or playing audio")
    
     else:   # tts
         start = time.time()
         print("Saving audio ...")
-        subprocess.call(["text2wave " + output_txt + " -o " + output_wav], shell=True)
-        print("Finished saving to arXiv:" + srcname + " to " + output_wav)
+        subprocess.call(["text2wave " + output_txt + " -o " + output_audio], shell=True)
+        print("Finished saving to arXiv:" + srcname + " to " + output_audio)
         print("Time to save audio = " + str(time.time()-start) + " seconds")
         
         if autoplay:
         	""" Playing audio file just created """
         	# possibly need different calls depending on the players if they have different input params, i.e. for speed etc
-        	subprocess.call([player + output_audio], shell=True)
+        	subprocess.call([player + " " + output_audio +  " " + options], shell=True)
         
 
         ### Other tts methods to continue investigating in future
