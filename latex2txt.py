@@ -15,12 +15,16 @@ from Arxiv import findRefType, downloadSource
 def get_axiv_src(arxivname):
     """export.arxiv.org/e-print/arxivname     # source location
     http://export.arxiv.org/abs/1510.06642    # abstract webpage
-    http://export.arxiv.org/pdf/1510.06642v1  # the pdf
+    http://export.arxiv.org/pdf/1510.06642v1.pdf  # the pdf
     # ability to take in any of these inputs could be good in future
     """
     ref = arxivname.split("/").pop()
     if "arXiv" in ref:
         ref = ref.split(":").pop()
+    
+    if ref.endswith(".pdf"):
+    	ref = ref.replace(".pdf","")
+
     print("ArXiv reference =", ref)
     Download_path = "SRC/"
     # Download source for arxivname article to tmp folder
@@ -53,25 +57,55 @@ def _parser():
                         help='Ouput Filename',)
     parser.add_argument('-t', '--saveText', default=False,
                        help='Save the text file')
-    parser.add_argument('-s', '--saveWave', default=True,
-                       help='Save the wavefile')
+    parser.add_argument('-s', '--saveAudio', default=True,
+                       help='Save the audiofile')
     parser.add_argument('-k','--keepSrc', default=False,
                        help='Keep source files')
-    parser.add_argument('--ftype', default="wav",
-                       help='Output audio file type')
+    parser.add_argument('-e', '--ext', default="mp3",
+                       help='Audio output extension')
+    parser.add_argument('-a','--autoplay', default=False,
+                       help='Automatically start playing')
+    parser.add_argument('-p','--player', default="mplayer",
+                       help='Mediaplayer to use for autoplay')
+    parser.add_argument('--options', default="",
+                       help='Extra command line player options')
 
     args = parser.parse_args()
     return args
 
-def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ftype="wav"):
+def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, saveText=False, keepSrc=False, autoplay=False, options=""):
     #fname ="Test_articles/trigger_solar_system_5R1.tex"
     #fname ="Test_articles/Trifonov_2015.tex"
     #url = "http://arxiv.org/e-print/1512.01087"
-    #saveText = True
-    #saveWave = True
     #url = "arXiv:1512.00492"
     #url = "http://arxiv.org/abs/1512.00777"
-   
+
+    if saveAudio == "0" or saveAudio == "False":
+        saveAudio = False
+    elif not saveAudio == False:
+        saveAudio = True
+
+    if keepSrc == "0" or keepSrc == "False":
+        keepSrc = False
+    elif not keepSrc == False:
+        keepSrc = True
+
+    if saveText == "0" or saveText == "False":
+        saveText = False
+    elif not saveText == False:
+        saveText = True
+    
+    if autoplay == "0" or autoplay == "False":
+        saveText = False
+    elif not saveText == False:
+        autoplay = True
+
+    valid_audio = ["wav","mp3"]
+    if ext not in valid_audio:
+    	print(ext + " is not a valid audio output type")
+    	print("Valid audio types are", valid_audio)
+    	raise(typeError)
+
     fname, srcname = get_axiv_src(arxivID)
     with open(fname, 'r') as f:
         #Initalizing
@@ -198,21 +232,34 @@ def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ft
     
     #if savetext:
     # Save output to text file
-    output = fname.split(".")
-    output.pop()
-    output_txt = output[0] +".txt"
-    output_wav = output[0] +".wav"
+    if not output:
+        output = fname.split(".")
+        output.pop()
+        output_txt = output[0] +".txt"
+        output_audio = output[0] +"."+ ext
+    else:
+        output_txt = output +".txt"
+        output_audio = output +"."+ ext
     with open(output_txt, "w") as fo:
            fo.write(data)
     print('Saved to ' + output_txt )
     # Currently saving to txt file so that it be read by a tts program
     # Ideally use something already implemented in python
-    if saveWave:   # tts
+    if not saveAudio:
+    	if autoplay:
+    		print("Need txt2speach commandline code here for subprocess call")
+    		subprocess.call(["festival --tts " + output_txt +  " " + options], shell=True) # remove text file
+    	else:
+    		print("Not saving audio file or playing audio")
+   
+    else:   # tts
         start = time.time()
         print("Saving audio ...")
-        subprocess.call(["text2wave " + output_txt + " -o " + output_wav], shell=True)
-        print("Finished saving to arXiv:" + srcname + " to " + output_wav)
+        subprocess.call(["text2wave " + output_txt + " -o " + output_audio], shell=True)
+        print("Finished saving to arXiv:" + srcname + " to " + output_audio)
         print("Time to save audio = " + str(time.time()-start) + " seconds")
+        
+        
 
         ### Other tts methods to continue investigating in future
         
@@ -235,12 +282,23 @@ def main(arxivID, output=False, saveWave=True, saveText=False, keepSrc=False, ft
         # engine.say(data)
         # engine.runAndWait()
         
-    print("Cleaning up ...")
+
+    print("Cleaning up files...")
+
     if not keepSrc:
         subprocess.call(["rm " +"SRC/" + srcname], shell=True) # remove text file
-
-    if not saveText:
         subprocess.call(["rm " + fname], shell=True) # remove text file
+        print("Removed " +"SRC/" + srcname + " and " + fname)
+    
+    if not saveText:
+        subprocess.call(["rm " + output_txt], shell=True) # remove text file
+        print("Removed " + output_txt)
+
+    if autoplay:
+            """ Playing audio file just created """
+            # possibly need different calls depending on the players if they have different input params, i.e. for speed etc
+            subprocess.call([player + " " + output_audio +  " " + options], shell=True)
+        
 
 
 if __name__ == "__main__":
