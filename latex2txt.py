@@ -7,7 +7,7 @@ import tarfile
 import subprocess
 import argparse
 #from os import subprocess
-import pyttsx
+#import pyttsx
 from list_regex import regex_sub
 from Arxiv import findRefType, downloadSource
 """#!/usr/local/bin/python3"""
@@ -23,9 +23,8 @@ def get_axiv_src(arxivname):
         ref = ref.split(":").pop()
     print("ArXiv reference =", ref)
     Download_path = "SRC/"
-    # download source for arxivname article to tmp folder
+    # Download source for arxivname article to tmp folder
     Type, ref = findRefType(ref)
-    print("Type ", Type, "Ref =", ref)
     downloadSource(ref, Type, Download_path)  # download the data
     tar = tarfile.open(Download_path + ref, mode="r")
     
