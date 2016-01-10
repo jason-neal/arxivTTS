@@ -241,10 +241,8 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
     #if savetext:
     # Save output to text file
     if not output:
-        output = fname.split(".")
-        output.pop()
-        output_txt = output[0] +".txt"
-        output_audio = output[0] +"."+ ext
+        output_txt = re.sub('.tex', '.txt', fname)
+        output_audio = re.sub('.tex', '.'+ext, fname)
     else:
         output_txt = output +".txt"
         output_audio = output +"."+ ext
