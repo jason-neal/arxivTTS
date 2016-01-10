@@ -79,7 +79,8 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
     #url = "http://arxiv.org/e-print/1512.01087"
     #url = "arXiv:1512.00492"
     #url = "http://arxiv.org/abs/1512.00777"
-
+    TMPDIR = "TMP"
+    FINALDIR = "FINAL"
     if saveAudio == "0" or saveAudio == "False":
         saveAudio = False
     elif not saveAudio == False:
@@ -248,17 +249,17 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
     if not saveAudio:
     	if autoplay:
     		print("Need txt2speach commandline code here for subprocess call")
-    		subprocess.call(["festival --tts " + output_txt +  " " + options], shell=True) # remove text file
+    		subprocess.call("festival --tts {0}/{1} {2}".format(FINALDIR, output_txt, options), shell=True) # remove text file
     	else:
     		print("Not saving audio file or playing audio")
    
     else:   # tts
         start = time.time()
         print("Saving audio ...")
-        subprocess.call(["text2wave " + output_txt + " -o " + output_audio], shell=True)
-        print("Finished saving to arXiv:" + srcname + " to " + output_audio)
+        subprocess.call(["text2wave {0}/{1} -o {0}/{2}".format(FINALDIR, ouptut_txt, output_audio), shell=True)
+        print("Finished saving to arXiv:{2} to {0}/{1}".format(FINALDIR, output_audio, srcname))
         print("Time to save audio = " + str(time.time()-start) + " seconds")
-        
+    
         
 
         ### Other tts methods to continue investigating in future
@@ -286,18 +287,21 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
     print("Cleaning up files...")
 
     if not keepSrc:
-        subprocess.call(["rm " +"SRC/" + srcname], shell=True) # remove text file
-        subprocess.call(["rm " + fname], shell=True) # remove text file
-        print("Removed " +"SRC/" + srcname + " and " + fname)
-    
-    if not saveText:
-        subprocess.call(["rm " + output_txt], shell=True) # remove text file
-        print("Removed " + output_txt)
+        subprocess.call("rm {0}/{1}".format(SRCDIR, srcname), shell=True) # remove tar source file
+        print("Removed {0}/{1}".format(SRCDIR, srcname)
 
+    if not keepTex:
+        subprocess.call("rm {0}/{1}".format(FINALDIR, fname), shell=True) # remove text file
+        print("Removed {0}/{1}".format(FINALDIR, fname))
+
+    if not saveText:
+        subprocess.call("rm {0}/{1}".format(FINALDIR, output_txt), shell=True) # remove text file
+        print("Removed {0}/{1}".format(FINALDIR, output_txt))
+          
     if autoplay:
             """ Playing audio file just created """
             # possibly need different calls depending on the players if they have different input params, i.e. for speed etc
-            subprocess.call([player + " " + output_audio +  " " + options], shell=True)
+            subprocess.call("{0} {1}/{2} {3}".format(player, FINALDIR, output_audio, options), shell=True)
         
 
 
