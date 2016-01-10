@@ -54,7 +54,7 @@ def _parser():
     parser = argparse.ArgumentParser(description="Arxiv Text-To-Speach")
     parser.add_argument('arxivID', help='Arxiv Identifier')
     parser.add_argument('-o', '--output', default=False,
-                        help='Ouput Filename',)
+                        help='Output Filename',)
     parser.add_argument('-t', '--saveText', default=False,
                        help='Save the text file')
     parser.add_argument('-s', '--saveAudio', default=True,
@@ -92,6 +92,11 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
         keepSrc = False
     elif not keepSrc == False:
         keepSrc = True
+
+    if keepTex == "0" or keepTex == "False":
+        keepTex = False
+    elif not keepTex == False:
+        keepTex = True
 
     if saveText == "0" or saveText == "False":
         saveText = False
@@ -258,7 +263,7 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
     else:   # tts
         start = time.time()
         print("Saving audio ...")
-        subprocess.call(["text2wave {0}/{1} -o {0}/{2}".format(FINALDIR, ouptut_txt, output_audio), shell=True)
+        subprocess.call("text2wave {0}/{1} -o {0}/{2}".format(FINALDIR, output_txt, output_audio), shell=True)
         print("Finished saving to arXiv:{2} to {0}/{1}".format(FINALDIR, output_audio, srcname))
         print("Time to save audio = " + str(time.time()-start) + " seconds")
     
@@ -290,7 +295,7 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
 
     if not keepSrc:
         subprocess.call("rm {0}/{1}".format(SRCDIR, srcname), shell=True) # remove tar source file
-        print("Removed {0}/{1}".format(SRCDIR, srcname)
+        print("Removed {0}/{1}".format(SRCDIR, srcname))
 
     if not keepTex:
         subprocess.call("rm {0}/{1}".format(FINALDIR, fname), shell=True) # remove text file
