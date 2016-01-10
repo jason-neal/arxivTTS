@@ -60,7 +60,9 @@ def _parser():
     parser.add_argument('-s', '--saveAudio', default=True,
                        help='Save the audiofile')
     parser.add_argument('-k','--keepSrc', default=False,
-                       help='Keep source files')
+                       help='Keep source tar file')
+    parser.add_argument('-l','--keepTex', default=False,
+                       help='Keep the latex source file name.tex')
     parser.add_argument('-e', '--ext', default="mp3",
                        help='Audio output extension')
     parser.add_argument('-a','--autoplay', default=False,
@@ -73,7 +75,7 @@ def _parser():
     args = parser.parse_args()
     return args
 
-def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, saveText=False, keepSrc=False, autoplay=False, options=""):
+def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, saveText=False, keepSrc=False, keepTex=False, autoplay=False, options=""):
     #fname ="Test_articles/trigger_solar_system_5R1.tex"
     #fname ="Test_articles/Trifonov_2015.tex"
     #url = "http://arxiv.org/e-print/1512.01087"
@@ -98,7 +100,7 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
     
     if autoplay == "0" or autoplay == "False":
         saveText = False
-    elif not saveText == False:
+    elif not autoplay == False:
         autoplay = True
 
     valid_audio = ["wav","mp3"]
