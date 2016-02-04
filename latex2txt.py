@@ -12,7 +12,7 @@ from list_regex import regex_sub
 from Arxiv import findRefType, downloadSource
 """#!/usr/local/bin/python3"""
 
-def get_axiv_src(arxivname):
+def get_arxiv_src(arxivname):
     """export.arxiv.org/e-print/arxivname     # source location
     http://export.arxiv.org/abs/1510.06642    # abstract webpage
     http://export.arxiv.org/pdf/1510.06642v1.pdf  # the pdf
@@ -39,6 +39,8 @@ def get_axiv_src(arxivname):
     print(texfile)
     filename = texfile[0].name
     tar.extractall(members=texfile)
+    
+    subprocess.call("mv {0} {1}/{0}".format(filename, "TMP"), shell=True) # remove text file
     
     return filename, ref
 
@@ -81,6 +83,7 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
     #url = "http://arxiv.org/e-print/1512.01087"
     #url = "arXiv:1512.00492"
     #url = "http://arxiv.org/abs/1512.00777"
+    SRCDIR = "SRC"
     TMPDIR = "TMP"
     FINALDIR = "FINAL"
     if saveAudio == "0" or saveAudio == "False":
@@ -108,14 +111,14 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
     elif not autoplay == False:
         autoplay = True
 
-    valid_audio = ["wav","mp3"]
+    valid_audio = ["wav", "mp3"]
     if ext not in valid_audio:
     	print(ext + " is not a valid audio output type")
     	print("Valid audio types are", valid_audio)
     	raise(typeError)
 
-    fname, srcname = get_axiv_src(arxivID)
-    with open(fname, 'r') as f:
+    fname, srcname = get_arxiv_src(arxivID)
+    with open("TMP/" + fname, 'r') as f:
         #Initalizing
         data = ""
         readflag = False
@@ -246,7 +249,7 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
     else:
         output_txt = output +".txt"
         output_audio = output +"."+ ext
-    with open(output_txt, "w") as fo:
+    with open("{0}/{1}".format(FINALDIR, output_txt), "w") as fo:
            fo.write(data)
     print('Saved to ' + output_txt )
     # Currently saving to txt file so that it be read by a tts program
@@ -296,8 +299,8 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True, sav
         print("Removed {0}/{1}".format(SRCDIR, srcname))
 
     if not keepTex:
-        subprocess.call("rm {0}/{1}".format(FINALDIR, fname), shell=True) # remove text file
-        print("Removed {0}/{1}".format(FINALDIR, fname))
+        subprocess.call("rm {0}/{1}".format(TMPDIR, fname), shell=True) # remove text file
+        print("Removed {0}/{1}".format(TMPDIR, fname))
 
     if not saveText:
         subprocess.call("rm {0}/{1}".format(FINALDIR, output_txt), shell=True) # remove text file
