@@ -90,7 +90,7 @@ def filtertest():
     print("printing Text data after loading in")
     #print(repr(textdata))
     # starting with simple test
-    formatterdict = {"_":" ",":":" ","-":" ", "_":" ", 
+    formatterdict = {":":" ","-":" ", "_":" ", 
                      "\n\n":"\n",  "/2":" "}
     word_replace = {"mjup":"jupiter mass", " A ": " Angstroms ",
                     "exoplanet":"exo-planet","S/N":"Signal to noise", "Fig.":"Figure", "Eq.":"Equation", "Eqs.":"Equations"} # Angstroms needs fixing
