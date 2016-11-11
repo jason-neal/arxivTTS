@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-#-*- coding: utf-8 -*-
+
 
 import re
 import time
@@ -122,7 +122,7 @@ def main(arxivID, output=False, ext="mp3", player="mplayer", saveAudio=True,
     if ext not in valid_audio:
         print(ext + " is not a valid audio output type")
         print("Valid audio types are", valid_audio)
-        raise(typeError)
+        raise(TypeError)
 
     fname, srcname = get_arxiv_src(arxivID)
     with open("TMP/" + fname, 'r') as f:
