@@ -1,24 +1,24 @@
-#! /usr/bin/python
+#! /usr/bin/env python
 
-## arXiv script version 0.3
+# # arXiv script version 0.3
 
-## Copyright 2015 Tom Brown
+# # Copyright 2015 Tom Brown
 
-## This program is free software; you can redistribute it and/or
-## modify it under the terms of the GNU General Public License as
-## published by the Free Software Foundation; either version 3 of the
-## License, or (at your option) any later version.
+# # This program is free software; you can redistribute it and/or
+# # modify it under the terms of the GNU General Public License as
+# # published by the Free Software Foundation; either version 3 of the
+# # License, or (at your option) any later version.
 
-## This program is distributed in the hope that it will be useful,
-## but WITHOUT ANY WARRANTY; without even the implied warranty of
-## MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-## GNU General Public License for more details.
+# # This program is distributed in the hope that it will be useful,
+# # but WITHOUT ANY WARRANTY; without even the implied warranty of
+# # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# # GNU General Public License for more details.
 
-## You should have received a copy of the GNU General Public License
-## along with this program.  If not, see <http://www.gnu.org/licenses/>.
+# # You should have received a copy of the GNU General Public License
+# # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-## See http://www.stringwiki.org/wiki/ArXiv_script for more usage
-## instructions
+# # See http://www.stringwiki.org/wiki/ArXiv_script for more usage
+# # instructions
 
 '''arXiv script
 Usage:
@@ -44,23 +44,27 @@ downloads the PS
 -s
 downloads the source file
 '''
+from __future__ import print_function
+import sys
+import os
+import getopt
+import re
+import urllib
+import gzip
 
 __version__ = "0.3"
 __author__ = "Tom Brown"
 __copyright__ = "Copyright 2015 Tom Brown, GNU GPL 3"
 
 
-import sys, os, getopt, re, urllib, gzip
-
-
 def findRefType(ref):
-    ref = ref.replace('arxiv:','')
-    if re.search(r'^[a-zA-Z\-\.]+/\d{7}$',ref):
+    ref = ref.replace('arxiv:', '')
+    if re.search(r'^[a-zA-Z\-\.]+/\d{7}$', ref):
         type = 'old-style eprint'
-    elif re.search(r'^\d{7}$',ref):
+    elif re.search(r'^\d{7}$', ref):
         type = 'old-style eprint'
         ref = 'hep-th/' + ref
-    elif re.search('^\d{4}\.\d{4,5}$',ref):
+    elif re.search('^\d{4}\.\d{4,5}$', ref):
         type = 'new-style eprint'
     else:
         type = 'not arXiv'
@@ -68,33 +72,34 @@ def findRefType(ref):
     return type, ref
 
 
-
-
-def downloadPDF(ref,type,downloadPath):
+def downloadPDF(ref, type, downloadPath):
     downloadPath = os.path.expanduser(downloadPath)
     if type == 'old-style eprint':
-        urllib.urlretrieve('http://arxiv.org/pdf/' + ref, downloadPath + ref.replace('/','-') + '.pdf')
+        urllib.urlretrieve('http://arxiv.org/pdf/' + ref,
+                           downloadPath + ref.replace('/', '-') + '.pdf')
     elif type == 'new-style eprint':
-        urllib.urlretrieve('http://arxiv.org/pdf/' + ref, downloadPath + ref + '.pdf')
+        urllib.urlretrieve('http://arxiv.org/pdf/' + ref,
+                           downloadPath + ref + '.pdf')
 
 
-def downloadPS(ref,type,downloadPath):
+def downloadPS(ref, type, downloadPath):
     downloadPath = os.path.expanduser(downloadPath)
-    filename = downloadPath + ref.replace('/','-')
+    filename = downloadPath + ref.replace('/', '-')
     urllib.urlretrieve('http://arxiv.org/ps/' + ref, filename)
-    gzipFile =  gzip.GzipFile(filename)
-    psFile = open(filename + ".ps","w")
+    gzipFile = gzip.GzipFile(filename)
+    psFile = open(filename + ".ps", "w")
     psFile.write(gzipFile.read())
     psFile.close()
     gzipFile.close()
     os.remove(filename)
 
-def downloadSource(ref,type,downloadPath):
+
+def downloadSource(ref, type, downloadPath):
     downloadPath = os.path.expanduser(downloadPath)
-    filename = downloadPath + ref.replace('/','-')
+    filename = downloadPath + ref.replace('/', '-')
     urllib.urlretrieve('http://arxiv.org/e-print/' + ref, filename + ".dum")
-    gzipFile =  gzip.GzipFile(filename + ".dum")
-    sourceFile = open(filename,"w")
+    gzipFile = gzip.GzipFile(filename + ".dum")
+    sourceFile = open(filename, "w")
     sourceFile.write(gzipFile.read())
     sourceFile.close()
     gzipFile.close()
@@ -111,8 +116,8 @@ def getAuthors(html):
     authors = html[html.find(">Authors:</span>"):]
     authors = authors[authors.find("\">")+2:]
     authors = authors[:authors.find("</div>")]
-    authors = re.sub('<[^>]*>','',authors)
-    authors = authors.replace("\n","")
+    authors = re.sub('<[^>]*>', '', authors)
+    authors = authors.replace("\n", "")
     return authors
 
 
@@ -120,6 +125,7 @@ def getAbstract(html):
     abstract = html[html.find("Abstract:</span>")+17:]
     abstract = abstract[:abstract.find("</blockquote>")-1]
     return abstract
+
 
 def getComments(html):
     if "comments" not in html:
@@ -139,8 +145,6 @@ def getJref(html):
         return jref
 
 
-
-
 if __name__ == "__main__":
 
     authorOpt = 0
@@ -153,15 +157,17 @@ if __name__ == "__main__":
     sourceOpt = 0
 
     try:
-        options, arguments = getopt.gnu_getopt(sys.argv[1:], 
-        'hatbcjdpsv', ['help'])
+        options, arguments = getopt.gnu_getopt(sys.argv[1:],
+                                               'hatbcjdpsv', ['help'])
     except getopt.error:
-        print 'error: you tried to use an unknown option or the argument for an option that requires it was missing; try \'arxiv.py -h\' for more information'
+        print('error: you tried to use an unknown option or the argument '
+              'for an option that requires it was missing; try \'arxiv.py '
+              '-h\' for more information')
         sys.exit(0)
 
-    for o,a in options:
-        if o in  ('-h','--help'):
-            print __doc__
+    for o, a in options:
+        if o in ('-h', '--help'):
+            print(__doc__)
             sys.exit(0)
 
         elif o == '-a':
@@ -188,7 +194,6 @@ if __name__ == "__main__":
         elif o == '-s':
             sourceOpt = 1
 
-
     if len(options) == 0:
         authorOpt = 1
         titleOpt = 1
@@ -196,25 +201,19 @@ if __name__ == "__main__":
         commentsOpt = 1
         jrefOpt = 1
 
-
-
     if len(arguments) != 1:
-        print 'you didn\'t specify an arXiv reference; try \'arxiv.py -h\' for more information'
+        print('you didn\'t specify an arXiv reference; try \'arxiv.py -h\' for'
+              ' more information')
         sys.exit(0)
     else:
-        ref=arguments[0]
-
-
-
-
+        ref = arguments[0]
 
     type, ref = findRefType(ref)
 
-    print "Reference",ref,"is of type",type
+    print("Reference", ref, "is of type", type)
 
-
-    if type=="not arXiv":
-        print "type not of arXiv form"
+    if type == "not arXiv":
+        print("type not of arXiv form")
         sys.exit(0)
 
     if authorOpt+titleOpt+abstractOpt+commentsOpt+jrefOpt > 0:
@@ -223,32 +222,29 @@ if __name__ == "__main__":
 
     if titleOpt:
         title = getTitle(html)
-        print title
+        print(title)
 
     if authorOpt:
         authors = getAuthors(html)
-        print authors
-
+        print(authors)
 
     if abstractOpt:
         abstract = getAbstract(html)
-        print abstract
-
+        print(abstract)
 
     if commentsOpt:
         comments = getComments(html)
-        print comments
-
+        print(comments)
 
     if jrefOpt:
         jref = getJref(html)
-        print jref
+        print(jref)
 
     if pdfOpt:
-        downloadPDF(ref,type,"")
+        downloadPDF(ref, type, "")
 
     if psOpt:
-        downloadPS(ref,type,"")
+        downloadPS(ref, type, "")
 
     if sourceOpt:
-        downloadSource(ref,type,"")
+        downloadSource(ref, type, "")
