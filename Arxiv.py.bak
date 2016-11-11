@@ -44,12 +44,12 @@ downloads the PS
 -s
 downloads the source file
 '''
-
+from __future__ import print_function
 import sys
 import os
 import getopt
 import re
-import urllib.request, urllib.parse, urllib.error
+import urllib
 import gzip
 
 __version__ = "0.3"
@@ -75,17 +75,17 @@ def findRefType(ref):
 def downloadPDF(ref, type, downloadPath):
     downloadPath = os.path.expanduser(downloadPath)
     if type == 'old-style eprint':
-        urllib.request.urlretrieve('http://arxiv.org/pdf/' + ref,
+        urllib.urlretrieve('http://arxiv.org/pdf/' + ref,
                            downloadPath + ref.replace('/', '-') + '.pdf')
     elif type == 'new-style eprint':
-        urllib.request.urlretrieve('http://arxiv.org/pdf/' + ref,
+        urllib.urlretrieve('http://arxiv.org/pdf/' + ref,
                            downloadPath + ref + '.pdf')
 
 
 def downloadPS(ref, type, downloadPath):
     downloadPath = os.path.expanduser(downloadPath)
     filename = downloadPath + ref.replace('/', '-')
-    urllib.request.urlretrieve('http://arxiv.org/ps/' + ref, filename)
+    urllib.urlretrieve('http://arxiv.org/ps/' + ref, filename)
     gzipFile = gzip.GzipFile(filename)
     psFile = open(filename + ".ps", "w")
     psFile.write(gzipFile.read())
@@ -97,7 +97,7 @@ def downloadPS(ref, type, downloadPath):
 def downloadSource(ref, type, downloadPath):
     downloadPath = os.path.expanduser(downloadPath)
     filename = downloadPath + ref.replace('/', '-')
-    urllib.request.urlretrieve('http://arxiv.org/e-print/' + ref, filename + ".dum")
+    urllib.urlretrieve('http://arxiv.org/e-print/' + ref, filename + ".dum")
     gzipFile = gzip.GzipFile(filename + ".dum")
     sourceFile = open(filename, "w")
     sourceFile.write(gzipFile.read())
@@ -217,7 +217,7 @@ if __name__ == "__main__":
         sys.exit(0)
 
     if authorOpt+titleOpt+abstractOpt+commentsOpt+jrefOpt > 0:
-        htmlObject = urllib.request.urlopen('http://arxiv.org/abs/' + ref)
+        htmlObject = urllib.urlopen('http://arxiv.org/abs/' + ref)
         html = htmlObject.read()
 
     if titleOpt:
