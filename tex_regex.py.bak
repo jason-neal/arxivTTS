@@ -19,7 +19,7 @@ def merge_dicts(*dict_args):
 
 def process_regexs(data, regexs):
     # Processing all dictionary regexs
-    for key, val in regexs.items():
+    for key, val in regexs.iteritems():
         data = re.sub(key, val, data)
     
     return data
